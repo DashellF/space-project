@@ -32,9 +32,9 @@ uniform vec3 uv2_offset;
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
-	VERTEX.y += sin(TIME * 0.25 + (VERTEX.x + VERTEX.z) * 0.2) * 5.0;
-	VERTEX.x += sin(TIME * 0.25 + (VERTEX.y + VERTEX.z) * 0.2) * 5.0;
-	VERTEX.z += sin(TIME * 0.25 + (VERTEX.x + VERTEX.y) * 0.2) * 5.0;
+	VERTEX.y += sin(TIME * 0.5 + (VERTEX.x + VERTEX.z) * 0.2) * 5.0;
+	VERTEX.x += sin(TIME * 0.5 + (VERTEX.y + VERTEX.z) * 0.2) * 5.0;
+	VERTEX.z += sin(TIME * 0.5 + (VERTEX.x + VERTEX.y) * 0.2) * 5.0;
 }
 
 void fragment() {
@@ -84,7 +84,7 @@ height = 865.38
 
 [sub_resource type="Animation" id="Animation_iveel"]
 resource_name = "ROTATE"
-length = 60.0
+length = 597.95
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -93,7 +93,7 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 57),
+"times": PackedFloat32Array(0, 597.95),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
@@ -121,6 +121,7 @@ _data = {
 }
 
 [node name="Sun" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9612, 36.4766, 25.3952)
 gi_mode = 2
 gi_lightmap_texel_scale = 5.662
 mesh = SubResource("SphereMesh_enfo0")
