@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://tu7m01jtcekk"]
+
+[ext_resource type="Texture2D" uid="uid://v70bjtj43irb" path="res://space/earth1.jpg" id="1_om26h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbwya"]
+albedo_texture = ExtResource("1_om26h")
+
+[sub_resource type="SphereMesh" id="SphereMesh_2bhor"]
+material = SubResource("StandardMaterial3D_qbwya")
+radius = 3.963
+height = 7.926
+
+[node name="earth" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_2bhor")
