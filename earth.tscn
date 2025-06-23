@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://tu7m01jtcekk"]
 
-[ext_resource type="Texture2D" uid="uid://v70bjtj43irb" path="res://space/earth1.jpg" id="1_om26h"]
+[ext_resource type="Texture2D" uid="uid://v70bjtj43irb" path="res://assets/earth1.jpg" id="1_om26h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qbwya"]
 albedo_texture = ExtResource("1_om26h")
@@ -9,6 +9,22 @@ albedo_texture = ExtResource("1_om26h")
 material = SubResource("StandardMaterial3D_qbwya")
 radius = 3.963
 height = 7.926
+
+[sub_resource type="Animation" id="Animation_qbwya"]
+length = 23.93
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 23.93),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_om26h"]
 resource_name = "ROTATE"
@@ -26,21 +42,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_qbwya"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2bhor"]
 _data = {
 &"RESET": SubResource("Animation_qbwya"),
@@ -54,4 +55,4 @@ mesh = SubResource("SphereMesh_2bhor")
 libraries = {
 &"": SubResource("AnimationLibrary_2bhor")
 }
-autoplay = "ROTATE"
+autoplay = "RESET"

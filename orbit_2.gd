@@ -1,8 +1,7 @@
 extends Node3D
 
-@export var orbit_radius: float = 94471 #radius
-#@export var orbit_speed: float = 0.000716 # radians per hour   (actual)
-@export var orbit_speed: float = 0.001 # radians per hour   (test)
+@export var orbit_radius: float = 67676.0 #radius
+@export var orbit_speed: float = 0.001164 # radians per hour
 
 var angle := 0.0
 var mesh: MeshInstance3D
@@ -12,11 +11,10 @@ var zcoord := 0.0
 
 func _ready():
 	
-	mesh = $Earth
+	mesh = $Venus
 	_update_orbit_position()
 
 func _process(delta):
-	
 	angle += orbit_speed * delta
 	_update_orbit_position()
 

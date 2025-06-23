@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cit721c0gtcea"]
 
-[ext_resource type="Texture2D" uid="uid://b1hgrdkfnwwdw" path="res://space/8k_venus_surface.jpg" id="1_mg830"]
+[ext_resource type="Texture2D" uid="uid://b1hgrdkfnwwdw" path="res://assets/8k_venus_surface.jpg" id="1_mg830"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cuv3"]
 albedo_texture = ExtResource("1_mg830")
@@ -9,6 +9,22 @@ albedo_texture = ExtResource("1_mg830")
 material = SubResource("StandardMaterial3D_5cuv3")
 radius = 3.76
 height = 7.521
+
+[sub_resource type="Animation" id="Animation_5cuv3"]
+length = 5832.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5807.7, 5832),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -6.28319, 0), Vector3(0, -6.28319, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_mg830"]
 resource_name = "rotate"
@@ -27,21 +43,6 @@ tracks/0/keys = {
 "values": [Vector3(0, -6.28319, 0), Vector3(0, -6.28319, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_5cuv3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xbhmx"]
 _data = {
 &"RESET": SubResource("Animation_5cuv3"),
@@ -51,8 +52,8 @@ _data = {
 [node name="venus" type="MeshInstance3D"]
 mesh = SubResource("SphereMesh_xbhmx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="rotate" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_xbhmx")
 }
-autoplay = "rotate"
+autoplay = "RESET"

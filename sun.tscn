@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://tspk0tagw5dm"]
 
-[ext_resource type="Texture2D" uid="uid://b7482p2n56185" path="res://space/8k_sun.jpg" id="1_iveel"]
+[ext_resource type="Texture2D" uid="uid://b7482p2n56185" path="res://assets/8k_sun.jpg" id="1_iveel"]
 
 [sub_resource type="Shader" id="Shader_gtd5v"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
@@ -32,9 +32,9 @@ uniform vec3 uv2_offset;
 
 void vertex() {
 	UV = UV * uv1_scale.xy + uv1_offset.xy;
-	VERTEX.y += sin(TIME * 0.5 + (VERTEX.x + VERTEX.z) * 0.2) * 5.0;
-	VERTEX.x += sin(TIME * 0.5 + (VERTEX.y + VERTEX.z) * 0.2) * 5.0;
-	VERTEX.z += sin(TIME * 0.5 + (VERTEX.x + VERTEX.y) * 0.2) * 5.0;
+	VERTEX.y += sin(TIME * 0.5 + (VERTEX.x + VERTEX.z) * 0.2) * 4.0;
+	VERTEX.x += sin(TIME * 0.5 + (VERTEX.y + VERTEX.z) * 0.2) * 4.0;
+	VERTEX.z += sin(TIME * 0.5 + (VERTEX.x + VERTEX.y) * 0.2) * 4.0;
 }
 
 void fragment() {
@@ -82,6 +82,22 @@ material = SubResource("ShaderMaterial_rxlph")
 radius = 432.69
 height = 865.38
 
+[sub_resource type="Animation" id="Animation_gtd5v"]
+length = 573.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 573.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_iveel"]
 resource_name = "ROTATE"
 length = 597.95
@@ -97,21 +113,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gtd5v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_enfo0"]
@@ -130,4 +131,4 @@ mesh = SubResource("SphereMesh_enfo0")
 libraries = {
 &"": SubResource("AnimationLibrary_enfo0")
 }
-autoplay = "ROTATE"
+autoplay = "RESET"

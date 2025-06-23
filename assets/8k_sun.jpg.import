@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cde4pq714dx40"
-path.s3tc="res://.godot/imported/8k_mercury.jpg-ad8af37434097222530a780cb4303a75.s3tc.ctex"
+uid="uid://b7482p2n56185"
+path.s3tc="res://.godot/imported/8k_sun.jpg-a734ab3b5c53270c580529b2a0ceb734.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://space/8k_mercury.jpg"
-dest_files=["res://.godot/imported/8k_mercury.jpg-ad8af37434097222530a780cb4303a75.s3tc.ctex"]
+source_file="res://assets/8k_sun.jpg"
+dest_files=["res://.godot/imported/8k_sun.jpg-a734ab3b5c53270c580529b2a0ceb734.s3tc.ctex"]
 
 [params]
 
