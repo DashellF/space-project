@@ -28,6 +28,7 @@ var offsets := [
 var planets := []
 var i := 0
 var earth_moon := []
+var mars_moons := []
 var k := 0
 
 @export var follow_speed: float = 5.0
@@ -54,6 +55,11 @@ func _ready():
 	
 	earth_moon = [
 		get_node("../Earth_O/Earth/Earth Moon")
+	]
+	
+	mars_moons = [
+		get_node("../Mars_O/Mars/phobos"),
+		get_node("../Mars_O/Mars/deimos")
 	]
 
 	offset = offsets[i]
@@ -94,8 +100,8 @@ func _process(delta):
 			if moon:
 				if i == 5:
 					k = (k + 1) % earth_moon.size() 
-				#elif i == 4:
-					#k = (k + 1) % mars_moon.size() 
+				elif i == 4:
+					k = (k + 1) % mars_moons.size() 
 			else:
 				i = (i + 1) % offsets.size()
 				offset = offsets[i]
@@ -111,9 +117,13 @@ func _process(delta):
 		if Input.is_action_just_pressed("left_arrow") and !time and i == 5:
 			moon = true
 			target = earth_moon[k]
+		if Input.is_action_just_pressed("left_arrow") and !time and i == 4:
+			moon = true
+			target = mars_moons[k]
 		if Input.is_action_just_pressed("right_arrow") and !time and moon:
 			moon = false
 			target = planets[i]
+			k = 0
 	else:
 		move_speed = lerp(move_speed, target_speed, delta * speed_acceleration)
 

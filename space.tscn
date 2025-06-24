@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=37 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_rxlph"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://sun.tscn" id="2_81phd"]
@@ -15,9 +15,12 @@
 [ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://mars_orbit.gd" id="9_4hog4"]
 [ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://jupiter_orbit.gd" id="12_betvx"]
 [ext_resource type="PackedScene" uid="uid://b2vcl2p14ny47" path="res://jupiter.tscn" id="13_7ltla"]
+[ext_resource type="Script" uid="uid://g4ralivnvkkm" path="res://mars.gd" id="14_20dnj"]
 [ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://saturn_orbit.gd" id="14_ap0gv"]
+[ext_resource type="PackedScene" uid="uid://7cu4rq6ekttr" path="res://assets/phobos.tscn" id="15_35bkm"]
+[ext_resource type="PackedScene" uid="uid://dh80prevuwpmd" path="res://deimos.tscn" id="16_4xipw"]
 [ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://uranus_orbit.gd" id="16_wun8x"]
-[ext_resource type="PackedScene" uid="uid://chffmihigys5i" path="res://saturnNASA.tscn" id="17_4v84m"]
+[ext_resource type="PackedScene" uid="uid://dsbhfk6f8o7qb" path="res://saturnFINAL.tscn" id="17_4v84m"]
 [ext_resource type="PackedScene" uid="uid://bmbewo8nx4lmc" path="res://uranus.tscn" id="17_ocht2"]
 [ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://neptune_orbit.gd" id="18_c8jnm"]
 [ext_resource type="PackedScene" uid="uid://nnexwfyo3n53" path="res://neptune.tscn" id="19_4fo3t"]
@@ -222,6 +225,7 @@ script = ExtResource("9_4hog4")
 
 [node name="Mars" parent="Mars_O" instance=ExtResource("9_1vxpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141600, 0, 0)
+script = ExtResource("14_20dnj")
 
 [node name="MA_tag" type="Node3D" parent="Mars_O/Mars"]
 transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
@@ -249,6 +253,10 @@ vertical_alignment = 1
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_m37bs")
+
+[node name="phobos" parent="Mars_O/Mars" instance=ExtResource("15_35bkm")]
+
+[node name="deimos" parent="Mars_O/Mars" instance=ExtResource("16_4xipw")]
 
 [node name="Jupiter_O" type="Node3D" parent="."]
 script = ExtResource("12_betvx")
@@ -289,7 +297,7 @@ script = ExtResource("14_ap0gv")
 [node name="Saturn" parent="Saturn_O" instance=ExtResource("17_4v84m")]
 
 [node name="SA_tag" type="Node3D" parent="Saturn_O/Saturn"]
-transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.0312481, 5.11811, 0.0109634)
 
 [node name="SubViewport" type="SubViewport" parent="Saturn_O/Saturn/SA_tag"]
 size = Vector2i(300, 25)

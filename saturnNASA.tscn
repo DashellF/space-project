@@ -1,7 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://chffmihigys5i"]
+[gd_scene load_steps=12 format=3 uid="uid://chffmihigys5i"]
 
 [ext_resource type="PackedScene" uid="uid://r47vpthcmluk" path="res://assets/Saturn_1_120536.glb" id="1_mqrx6"]
+[ext_resource type="Texture2D" uid="uid://ci0auj6fcj513" path="res://assets/Saturn_1_120536 (1)_saturn_diff.png" id="2_mjap4"]
 [ext_resource type="Texture2D" uid="uid://c7wh5q4fab61k" path="res://assets/8k_saturn_ring_alpha.png" id="2_yheot"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8d7tn"]
+albedo_texture = ExtResource("2_mjap4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_it142"]
+transparency = 1
+albedo_texture = ExtResource("2_yheot")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqrx6"]
 transparency = 1
@@ -54,8 +62,13 @@ _data = {
 }
 
 [node name="Saturn_1_120536" instance=ExtResource("1_mqrx6")]
+transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 0, 0, 0)
+
+[node name="Saturn_001" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_8d7tn")
 
 [node name="RingsTop" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_it142")
 material_overlay = SubResource("StandardMaterial3D_mqrx6")
 
 [node name="RingsBottom" parent="." index="2"]
