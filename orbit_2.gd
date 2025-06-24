@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var orbit_radius: float = 67676.0 #radius
-@export var orbit_speed: float = 0.001164 # radians per hour
+@export var orbit_speed: float = 0.001165 # radians per hour
 
 var angle := 0.0
 var mesh: MeshInstance3D
@@ -23,4 +23,4 @@ func _update_orbit_position():
 	var z = orbit_radius * sin(angle) + zcoord
 	mesh.transform.origin = Vector3(x, 0, z)
 	
-#I know they also have a tilt but I didn't implement that either
+#I know they also have a tilt but I didn't implement that either yet

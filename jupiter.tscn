@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2vcl2p14ny47"]
+
+[ext_resource type="Texture2D" uid="uid://xtnsgygcgi22" path="res://assets/8k_jupiter.jpg" id="1_mvbpq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si51w"]
+albedo_texture = ExtResource("1_mvbpq")
+
+[sub_resource type="SphereMesh" id="SphereMesh_i0uay"]
+material = SubResource("StandardMaterial3D_si51w")
+radius = 44.423
+height = 88.846
+
+[sub_resource type="Animation" id="Animation_2ww3y"]
+resource_name = "ROTATE"
+length = 9.933
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 9.933),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_edcrs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vk8o"]
+_data = {
+&"RESET": SubResource("Animation_edcrs"),
+&"ROTATE": SubResource("Animation_2ww3y")
+}
+
+[node name="jupiter" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_i0uay")
+
+[node name="rotation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1vk8o")
+}
+autoplay = "ROTATE"
