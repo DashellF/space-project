@@ -1,8 +1,8 @@
 extends Node3D
 
 @export var orbit_radius: float = 94471 #radius
-#@export var orbit_speed: float = 0.000716 # radians per hour   (actual)
-@export var orbit_speed: float = 0.001 # radians per hour   (test)
+@export var orbit_speed: float = -0.000716 # radians per hour   (actual)
+#@export var orbit_speed: float = -0.001 # radians per hour   (test)
 
 var angle := 0.0
 var mesh: MeshInstance3D
