@@ -37,14 +37,14 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	planets = [
-		get_node("../orbit8/Neptune"),
-		get_node("../orbit7/Uranus"),
-		get_node("../orbit6/Saturn"),
-		get_node("../orbit5/Jupiter"),
-		get_node("../orbit4/Mars"),
-		get_node("../orbit/Earth"),
-		get_node("../orbit2/Venus"),
-		get_node("../orbit3/Mercury"),
+		get_node("../Neptune_O/Neptune"),
+		get_node("../Uranus_O/Uranus"),
+		get_node("../Saturn_O/Saturn"),
+		get_node("../Jupiter_O/Jupiter"),
+		get_node("../Mars_O/Mars"),
+		get_node("../Earth_O/Earth"),
+		get_node("../Venus_O/Venus"),
+		get_node("../Mercury_O/Mercury"),
 		get_node("../Sun")
 	]
 
@@ -121,3 +121,6 @@ func _process(delta):
 			target = null
 		else:
 			target = planets[i]
+
+
+## Hi Dashell, lets work on these items: Name Tags, Orbit paths of diff planets, and Camera movement (freecam while spectating a particular planet)

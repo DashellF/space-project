@@ -6,18 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://ijf1kly4ex0r" path="res://mercury.tscn" id="3_qtpbo"]
 [ext_resource type="PackedScene" uid="uid://cit721c0gtcea" path="res://venus.tscn" id="4_ulv8f"]
 [ext_resource type="PackedScene" uid="uid://tu7m01jtcekk" path="res://earth.tscn" id="5_ulv8f"]
-[ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://earth_point.gd" id="5_w5eul"]
-[ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://orbit_2.gd" id="7_4fhbr"]
-[ext_resource type="Script" uid="uid://berodv21tqgot" path="res://orbit_3.gd" id="8_myilm"]
+[ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://earth_orbit.gd" id="5_w5eul"]
+[ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://venus_orbit.gd" id="7_4fhbr"]
+[ext_resource type="Script" uid="uid://berodv21tqgot" path="res://mercury_orbit.gd" id="8_myilm"]
 [ext_resource type="PackedScene" uid="uid://gq1jii67eufs" path="res://mars.tscn" id="9_1vxpe"]
-[ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://orbit_4.gd" id="9_4hog4"]
-[ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://orbit_5.gd" id="12_betvx"]
+[ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://mars_orbit.gd" id="9_4hog4"]
+[ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://jupiter_orbit.gd" id="12_betvx"]
 [ext_resource type="PackedScene" uid="uid://b2vcl2p14ny47" path="res://jupiter.tscn" id="13_7ltla"]
-[ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://orbit_6.gd" id="14_ap0gv"]
+[ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://saturn_orbit.gd" id="14_ap0gv"]
 [ext_resource type="PackedScene" uid="uid://yqljqvolfjnd" path="res://saturn.tscn" id="15_y7rfp"]
-[ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://orbit_7.gd" id="16_wun8x"]
+[ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://uranus_orbit.gd" id="16_wun8x"]
 [ext_resource type="PackedScene" uid="uid://bmbewo8nx4lmc" path="res://uranus.tscn" id="17_ocht2"]
-[ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://orbit_8.gd" id="18_c8jnm"]
+[ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://neptune_orbit.gd" id="18_c8jnm"]
 [ext_resource type="PackedScene" uid="uid://nnexwfyo3n53" path="res://neptune.tscn" id="19_4fo3t"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_81phd"]
@@ -53,55 +53,55 @@ script = ExtResource("2_b5fhv")
 
 [node name="Sun" parent="." instance=ExtResource("2_81phd")]
 
-[node name="orbit" type="Node3D" parent="."]
+[node name="Earth_O" type="Node3D" parent="."]
 script = ExtResource("5_w5eul")
 
-[node name="Earth" parent="orbit" instance=ExtResource("5_ulv8f")]
+[node name="Earth" parent="Earth_O" instance=ExtResource("5_ulv8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94471, 0, 0)
 skeleton = NodePath("../..")
 
-[node name="orbit2" type="Node3D" parent="."]
+[node name="Venus_O" type="Node3D" parent="."]
 script = ExtResource("7_4fhbr")
 
-[node name="Venus" parent="orbit2" instance=ExtResource("4_ulv8f")]
+[node name="Venus" parent="Venus_O" instance=ExtResource("4_ulv8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67676, 0, 0)
 skeleton = NodePath("../..")
 
-[node name="orbit3" type="Node3D" parent="."]
+[node name="Mercury_O" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038476, 0, 0)
 script = ExtResource("8_myilm")
 
-[node name="Mercury" parent="orbit3" instance=ExtResource("3_qtpbo")]
+[node name="Mercury" parent="Mercury_O" instance=ExtResource("3_qtpbo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37231, 0, 0)
 skeleton = NodePath("../..")
 
-[node name="orbit4" type="Node3D" parent="."]
+[node name="Mars_O" type="Node3D" parent="."]
 script = ExtResource("9_4hog4")
 
-[node name="Mars" parent="orbit4" instance=ExtResource("9_1vxpe")]
+[node name="Mars" parent="Mars_O" instance=ExtResource("9_1vxpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141600, 0, 0)
 
-[node name="orbit5" type="Node3D" parent="."]
+[node name="Jupiter_O" type="Node3D" parent="."]
 script = ExtResource("12_betvx")
 
-[node name="Jupiter" parent="orbit5" instance=ExtResource("13_7ltla")]
+[node name="Jupiter" parent="Jupiter_O" instance=ExtResource("13_7ltla")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477760, 0, 0)
 
-[node name="orbit6" type="Node3D" parent="."]
+[node name="Saturn_O" type="Node3D" parent="."]
 script = ExtResource("14_ap0gv")
 
-[node name="Saturn" parent="orbit6" instance=ExtResource("15_y7rfp")]
+[node name="Saturn" parent="Saturn_O" instance=ExtResource("15_y7rfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 889910, 0, 0)
 skeleton = NodePath("../..")
 
-[node name="orbit7" type="Node3D" parent="."]
+[node name="Uranus_O" type="Node3D" parent="."]
 script = ExtResource("16_wun8x")
 
-[node name="Uranus" parent="orbit7" instance=ExtResource("17_ocht2")]
+[node name="Uranus" parent="Uranus_O" instance=ExtResource("17_ocht2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8141e+06, 0, 0)
 
-[node name="orbit8" type="Node3D" parent="."]
+[node name="Neptune_O" type="Node3D" parent="."]
 script = ExtResource("18_c8jnm")
 
-[node name="Neptune" parent="orbit8" instance=ExtResource("19_4fo3t")]
+[node name="Neptune" parent="Neptune_O" instance=ExtResource("19_4fo3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7781e+06, 0, 0)
