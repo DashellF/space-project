@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=32 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_rxlph"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://sun.tscn" id="2_81phd"]
@@ -32,6 +32,33 @@ sky = SubResource("Sky_qtpbo")
 glow_bloom = 0.2
 glow_blend_mode = 1
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_n7sbm"]
+viewport_path = NodePath("Sun/SU_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c8jnm"]
+viewport_path = NodePath("Earth_O/Earth/EA_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4fo3t"]
+viewport_path = NodePath("Venus_O/Venus/VE_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4v84m"]
+viewport_path = NodePath("Mercury_O/Mercury/ME_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m37bs"]
+viewport_path = NodePath("Mars_O/Mars/MA_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_55yc6"]
+viewport_path = NodePath("Jupiter_O/Jupiter/JU_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_20dnj"]
+viewport_path = NodePath("Saturn_O/Saturn/SA_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_35bkm"]
+viewport_path = NodePath("Uranus_O/Uranus/UR_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4xipw"]
+viewport_path = NodePath("Neptune_O/Neptune/NE_tag/SubViewport")
+
 [node name="Space" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01166, -2.52292, -10.5008)
 
@@ -39,7 +66,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01166, -2.52292, -10.5008)
 light_energy = 100000.0
 light_size = 865.38
 light_specular = 2.024
-omni_range = 1e+08
+omni_range = 1e+09
+omni_attenuation = 0.9
 omni_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -53,6 +81,33 @@ script = ExtResource("2_b5fhv")
 
 [node name="Sun" parent="." instance=ExtResource("2_81phd")]
 
+[node name="SU_tag" type="Node3D" parent="Sun"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Sun/SU_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Sun/SU_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sol"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Sun/SU_tag"]
+transform = Transform3D(175, 0, 0, 0, 175, 0, 0, 0, 175, 0, 500, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_n7sbm")
+
 [node name="Earth_O" type="Node3D" parent="."]
 script = ExtResource("5_w5eul")
 
@@ -60,12 +115,66 @@ script = ExtResource("5_w5eul")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94471, 0, 0)
 skeleton = NodePath("../..")
 
+[node name="EA_tag" type="Node3D" parent="Earth_O/Earth"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Earth_O/Earth/EA_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Earth_O/Earth/EA_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Earth"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Earth_O/Earth/EA_tag"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_c8jnm")
+
 [node name="Venus_O" type="Node3D" parent="."]
 script = ExtResource("7_4fhbr")
 
 [node name="Venus" parent="Venus_O" instance=ExtResource("4_ulv8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67676, 0, 0)
 skeleton = NodePath("../..")
+
+[node name="VE_tag" type="Node3D" parent="Venus_O/Venus"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Venus_O/Venus/VE_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Venus_O/Venus/VE_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Venus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Venus_O/Venus/VE_tag"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_4fo3t")
 
 [node name="Mercury_O" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038476, 0, 0)
@@ -75,17 +184,98 @@ script = ExtResource("8_myilm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37231, 0, 0)
 skeleton = NodePath("../..")
 
+[node name="ME_tag" type="Node3D" parent="Mercury_O/Mercury"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 3.16611, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Mercury_O/Mercury/ME_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Mercury_O/Mercury/ME_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mercury"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Mercury_O/Mercury/ME_tag"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_4v84m")
+
 [node name="Mars_O" type="Node3D" parent="."]
 script = ExtResource("9_4hog4")
 
 [node name="Mars" parent="Mars_O" instance=ExtResource("9_1vxpe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141600, 0, 0)
 
+[node name="MA_tag" type="Node3D" parent="Mars_O/Mars"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Mars_O/Mars/MA_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Mars_O/Mars/MA_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mars"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Mars_O/Mars/MA_tag"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_m37bs")
+
 [node name="Jupiter_O" type="Node3D" parent="."]
 script = ExtResource("12_betvx")
 
 [node name="Jupiter" parent="Jupiter_O" instance=ExtResource("13_7ltla")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477760, 0, 0)
+
+[node name="JU_tag" type="Node3D" parent="Jupiter_O/Jupiter"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Jupiter_O/Jupiter/JU_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Jupiter_O/Jupiter/JU_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jupiter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Jupiter_O/Jupiter/JU_tag"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 50, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_55yc6")
 
 [node name="Saturn_O" type="Node3D" parent="."]
 script = ExtResource("14_ap0gv")
@@ -94,14 +284,95 @@ script = ExtResource("14_ap0gv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 889910, 0, 0)
 skeleton = NodePath("../..")
 
+[node name="SA_tag" type="Node3D" parent="Saturn_O/Saturn"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Saturn_O/Saturn/SA_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Saturn_O/Saturn/SA_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Saturn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Saturn_O/Saturn/SA_tag"]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 50, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_20dnj")
+
 [node name="Uranus_O" type="Node3D" parent="."]
 script = ExtResource("16_wun8x")
 
 [node name="Uranus" parent="Uranus_O" instance=ExtResource("17_ocht2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8141e+06, 0, 0)
 
+[node name="UR_tag" type="Node3D" parent="Uranus_O/Uranus"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Uranus_O/Uranus/UR_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Uranus_O/Uranus/UR_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Uranus"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Uranus_O/Uranus/UR_tag"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 20, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_35bkm")
+
 [node name="Neptune_O" type="Node3D" parent="."]
 script = ExtResource("18_c8jnm")
 
 [node name="Neptune" parent="Neptune_O" instance=ExtResource("19_4fo3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7781e+06, 0, 0)
+
+[node name="NE_tag" type="Node3D" parent="Neptune_O/Neptune"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Neptune_O/Neptune/NE_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Neptune_O/Neptune/NE_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Neptune"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Neptune_O/Neptune/NE_tag"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 20, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_4xipw")
