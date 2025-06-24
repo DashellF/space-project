@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://chffmihigys5i"]
+
+[ext_resource type="PackedScene" uid="uid://r47vpthcmluk" path="res://assets/Saturn_1_120536.glb" id="1_mqrx6"]
+[ext_resource type="Texture2D" uid="uid://c7wh5q4fab61k" path="res://assets/8k_saturn_ring_alpha.png" id="2_yheot"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqrx6"]
+transparency = 1
+albedo_texture = ExtResource("2_yheot")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mjap4"]
+transparency = 1
+albedo_texture = ExtResource("2_yheot")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yheot"]
+transparency = 1
+albedo_texture = ExtResource("2_yheot")
+
+[sub_resource type="Animation" id="Animation_cfn6t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_abjq1"]
+resource_name = "ROTATE"
+length = 10.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yo184"]
+_data = {
+&"RESET": SubResource("Animation_cfn6t"),
+&"ROTATE": SubResource("Animation_abjq1")
+}
+
+[node name="Saturn_1_120536" instance=ExtResource("1_mqrx6")]
+
+[node name="RingsTop" parent="." index="1"]
+material_overlay = SubResource("StandardMaterial3D_mqrx6")
+
+[node name="RingsBottom" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_mjap4")
+material_overlay = SubResource("StandardMaterial3D_yheot")
+
+[node name="rotation" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_yo184")
+}
+autoplay = "ROTATE"

@@ -4,7 +4,7 @@ extends Node3D
 @export var orbit_speed: float = -0.0000244 # radians per hour
 
 var angle := 0.0
-var mesh: MeshInstance3D
+var mesh: Node3D
 
 var xcoord := 0.0
 var zcoord := 0.0

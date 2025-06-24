@@ -3,6 +3,7 @@ extends Camera3D
 # Free camera settings
 var freecamera := false
 var time := false
+var moon := false
 
 var move_speed := 10.0
 var target_speed := 10.0
@@ -25,12 +26,15 @@ var offsets := [
 	Vector3(-700, 250, -700)  # SUN
 ]
 var planets := []
+var i := 0
+var earth_moon := []
+var k := 0
 
 @export var follow_speed: float = 5.0
 
-var i := 0
+
 var offset: Vector3
-var target: MeshInstance3D
+var target: Node3D
 
 
 func _ready():
@@ -46,6 +50,10 @@ func _ready():
 		get_node("../Venus_O/Venus"),
 		get_node("../Mercury_O/Mercury"),
 		get_node("../Sun")
+	]
+	
+	earth_moon = [
+		get_node("../Earth_O/Earth/Earth Moon")
 	]
 
 	offset = offsets[i]
@@ -83,12 +91,28 @@ func _process(delta):
 
 	if !freecamera:
 		if Input.is_action_just_pressed("up_arrow") and !time:
-			i = (i + 1) % offsets.size()
-			offset = offsets[i]
-			target = planets[i]
+			if moon:
+				if i == 5:
+					k = (k + 1) % earth_moon.size() 
+				#elif i == 4:
+					#k = (k + 1) % mars_moon.size() 
+			else:
+				i = (i + 1) % offsets.size()
+				offset = offsets[i]
+				target = planets[i]
 		if Input.is_action_just_pressed("down_arrow") and !time:
-			i = (i - 1 + offsets.size()) % offsets.size()
-			offset = offsets[i]
+			if moon:
+				if i == 5:
+					k = (k - 1 + offsets.size()) % offsets.size()
+			else:
+				i = (i - 1 + offsets.size()) % offsets.size()
+				offset = offsets[i]
+				target = planets[i]
+		if Input.is_action_just_pressed("left_arrow") and !time and i == 5:
+			moon = true
+			target = earth_moon[k]
+		if Input.is_action_just_pressed("right_arrow") and !time and moon:
+			moon = false
 			target = planets[i]
 	else:
 		move_speed = lerp(move_speed, target_speed, delta * speed_acceleration)
