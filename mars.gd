@@ -7,8 +7,8 @@ extends MeshInstance3D
 @export var orbit_speedP: float = -0.8206
 @onready var orbiting_bodyP: Node3D = $phobos
 
-var angleD := 0.0
-var angleP := 0.0
+var angleD := 18.6225
+var angleP := 66.5134
 
 func _process(delta):
 	angleD += orbit_speedD * delta

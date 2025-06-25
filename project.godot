@@ -14,6 +14,10 @@ config/name="Space Project"
 run/main_scene="uid://rl24q6d8ab83"
 config/features=PackedStringArray("4.4", "Forward Plus")
 
+[autoload]
+
+global="*res://global_script.gd"
+
 [input]
 
 up_arrow={

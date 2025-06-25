@@ -30,6 +30,18 @@ var i := 0
 var earth_moon := []
 var mars_moons := []
 var k := 0
+var planets_names := [
+	"Neptune",
+	"Uranus",
+	"Saturn",
+	"Jupiter",
+	"Mars",
+	"Earth",
+	"Venus",
+	"Mercury",
+	"Sol",
+]
+signal planet_num(planet)
 
 @export var follow_speed: float = 5.0
 
@@ -106,6 +118,7 @@ func _process(delta):
 				i = (i + 1) % offsets.size()
 				offset = offsets[i]
 				target = planets[i]
+				emit_signal("planet_num", planets_names[i])
 		if Input.is_action_just_pressed("down_arrow") and !time:
 			if moon:
 				if i == 5:
@@ -114,6 +127,7 @@ func _process(delta):
 				i = (i - 1 + offsets.size()) % offsets.size()
 				offset = offsets[i]
 				target = planets[i]
+				emit_signal("planet_num", planets_names[i])
 		if Input.is_action_just_pressed("left_arrow") and !time and i == 5:
 			moon = true
 			target = earth_moon[k]
@@ -123,6 +137,7 @@ func _process(delta):
 		if Input.is_action_just_pressed("right_arrow") and !time and moon:
 			moon = false
 			target = planets[i]
+			emit_signal("planet_num", planets_names[i])
 			k = 0
 	else:
 		move_speed = lerp(move_speed, target_speed, delta * speed_acceleration)

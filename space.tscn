@@ -1,13 +1,15 @@
-[gd_scene load_steps=37 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=40 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_rxlph"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://sun.tscn" id="2_81phd"]
 [ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_b5fhv"]
+[ext_resource type="Script" uid="uid://hldmo63xy0fh" path="res://ui_planet_button.gd" id="3_35bkm"]
 [ext_resource type="PackedScene" uid="uid://ijf1kly4ex0r" path="res://mercury.tscn" id="3_qtpbo"]
+[ext_resource type="Script" uid="uid://big3kbbl8xv06" path="res://timer_script.gd" id="4_4xipw"]
 [ext_resource type="PackedScene" uid="uid://cit721c0gtcea" path="res://venus.tscn" id="4_ulv8f"]
 [ext_resource type="PackedScene" uid="uid://tu7m01jtcekk" path="res://earth.tscn" id="5_ulv8f"]
 [ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://earth_orbit.gd" id="5_w5eul"]
-[ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://earth.gd" id="6_4v84m"]
+[ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://earth_moonO.gd" id="6_4v84m"]
 [ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://venus_orbit.gd" id="7_4fhbr"]
 [ext_resource type="PackedScene" uid="uid://cwy75yc77u8n4" path="res://earth_moon.tscn" id="7_m37bs"]
 [ext_resource type="Script" uid="uid://berodv21tqgot" path="res://mercury_orbit.gd" id="8_myilm"]
@@ -36,6 +38,8 @@ background_mode = 2
 sky = SubResource("Sky_qtpbo")
 glow_bloom = 0.2
 glow_blend_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_35bkm"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n7sbm"]
 viewport_path = NodePath("Sun/SU_tag/SubViewport")
@@ -83,6 +87,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477700, 0, 7.378)
 current = true
 far = 100000.0
 script = ExtResource("2_b5fhv")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -6.0
+offset_right = 1152.0
+offset_bottom = 642.0
+
+[node name="Big panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -300.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Hi
+"
+
+[node name="Main Box" type="VBoxContainer" parent="Control/Big panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.41
+anchor_bottom = 0.268
+offset_right = 118.0
+offset_bottom = 82.6
+
+[node name="BoxContainer" type="BoxContainer" parent="Control/Big panel/Main Box"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Big panel/Main Box/BoxContainer"]
+layout_mode = 2
+text = " Current Planet:"
+
+[node name="Label2" type="Label" parent="Control/Big panel/Main Box/BoxContainer"]
+layout_mode = 2
+script = ExtResource("3_35bkm")
+
+[node name="Time" type="BoxContainer" parent="Control/Big panel/Main Box"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Big panel/Main Box/Time"]
+layout_mode = 2
+text = "Date:"
+label_settings = SubResource("LabelSettings_35bkm")
+
+[node name="Label2" type="Label" parent="Control/Big panel/Main Box/Time"]
+layout_mode = 2
+text = "1/1/2025 00:00:00"
+label_settings = SubResource("LabelSettings_35bkm")
+script = ExtResource("4_4xipw")
 
 [node name="Sun" parent="." instance=ExtResource("2_81phd")]
 
@@ -318,8 +376,8 @@ text = "Saturn"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Sprite3D" type="Sprite3D" parent="Saturn_O/Saturn/SA_tag"]
-transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 50, 0)
+[node name="SA_S3D" type="Sprite3D" parent="Saturn_O/Saturn/SA_tag"]
+transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, 0, 600, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_20dnj")
 
@@ -388,3 +446,5 @@ vertical_alignment = 1
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 20, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_4xipw")
+
+[connection signal="planet_num" from="Camera3D" to="Control/Big panel/Main Box/BoxContainer/Label2" method="_on_camera_3d_planet_num"]
