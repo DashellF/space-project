@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=57 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_rxlph"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://sun.tscn" id="2_81phd"]
@@ -50,26 +50,106 @@ viewport_path = NodePath("Earth_O/Earth/EA_tag/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_gvyvm"]
 viewport_path = NodePath("Earth_O/Earth/Earth Moon/EAM_tag/SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7sbm"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_n7sbm"]
+material = SubResource("StandardMaterial3D_n7sbm")
+inner_radius = 94471.0
+outer_radius = 94471.5
+rings = 1000
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_4fo3t"]
 viewport_path = NodePath("Venus_O/Venus/VE_tag/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xipw"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_b7v62"]
+material = SubResource("StandardMaterial3D_4xipw")
+inner_radius = 67676.0
+outer_radius = 67676.5
+rings = 1000
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4v84m"]
 viewport_path = NodePath("Mercury_O/Mercury/ME_tag/SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvyvm"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_gvyvm"]
+material = SubResource("StandardMaterial3D_gvyvm")
+inner_radius = 37231.0
+outer_radius = 37231.5
+rings = 1000
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_m37bs"]
 viewport_path = NodePath("Mars_O/Mars/MA_tag/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b7v62"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_5kb2i"]
+material = SubResource("StandardMaterial3D_b7v62")
+inner_radius = 141600.0
+outer_radius = 141601.0
+rings = 1000
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_55yc6"]
 viewport_path = NodePath("Jupiter_O/Jupiter/JU_tag/SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1680u"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_tw1ps"]
+material = SubResource("StandardMaterial3D_1680u")
+inner_radius = 477760.0
+outer_radius = 477761.0
+rings = 1000
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_20dnj"]
 viewport_path = NodePath("Saturn_O/Saturn/SA_tag/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ad55v"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_2uuaj"]
+material = SubResource("StandardMaterial3D_ad55v")
+inner_radius = 889910.0
+outer_radius = 889911.0
+rings = 1000
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_35bkm"]
 viewport_path = NodePath("Uranus_O/Uranus/UR_tag/SubViewport")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieweg"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_1rfj2"]
+material = SubResource("StandardMaterial3D_ieweg")
+inner_radius = 1.8141e+06
+outer_radius = 1.8141e+06
+rings = 1000
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_4xipw"]
 viewport_path = NodePath("Neptune_O/Neptune/NE_tag/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jffas"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_4xipw"]
+material = SubResource("StandardMaterial3D_jffas")
+inner_radius = 2.7781e+06
+outer_radius = 2.77811e+06
+rings = 1000
 
 [node name="Space" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01166, -2.52292, -10.5008)
@@ -79,14 +159,14 @@ light_energy = 50000.0
 light_size = 865.38
 light_specular = 2.024
 omni_range = 1e+09
-omni_attenuation = 0.9
+omni_attenuation = 0.89
 omni_shadow_mode = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rxlph")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477700, 0, 7.378)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.778e+06, 0, 7.378)
 current = true
 far = 100000.0
 script = ExtResource("2_b5fhv")
@@ -239,6 +319,9 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_gvyvm")
 
+[node name="EAOrbLine" type="MeshInstance3D" parent="Earth_O"]
+mesh = SubResource("TorusMesh_n7sbm")
+
 [node name="Venus_O" type="Node3D" parent="."]
 script = ExtResource("7_4fhbr")
 
@@ -272,6 +355,9 @@ vertical_alignment = 1
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_4fo3t")
+
+[node name="VEOrbLine" type="MeshInstance3D" parent="Venus_O"]
+mesh = SubResource("TorusMesh_b7v62")
 
 [node name="Mercury_O" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038476, 0, 0)
@@ -307,6 +393,9 @@ vertical_alignment = 1
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_4v84m")
+
+[node name="MEOrbLine" type="MeshInstance3D" parent="Mercury_O"]
+mesh = SubResource("TorusMesh_gvyvm")
 
 [node name="Mars_O" type="Node3D" parent="."]
 script = ExtResource("9_4hog4")
@@ -346,6 +435,9 @@ texture = SubResource("ViewportTexture_m37bs")
 
 [node name="deimos" parent="Mars_O/Mars" instance=ExtResource("16_4xipw")]
 
+[node name="MAOrbLine" type="MeshInstance3D" parent="Mars_O"]
+mesh = SubResource("TorusMesh_5kb2i")
+
 [node name="Jupiter_O" type="Node3D" parent="."]
 script = ExtResource("12_betvx")
 
@@ -379,6 +471,9 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 50, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_55yc6")
 
+[node name="JUOrbLine" type="MeshInstance3D" parent="Jupiter_O"]
+mesh = SubResource("TorusMesh_tw1ps")
+
 [node name="Saturn_O" type="Node3D" parent="."]
 script = ExtResource("14_ap0gv")
 
@@ -410,6 +505,9 @@ vertical_alignment = 1
 transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, 0, 600, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_20dnj")
+
+[node name="SAOrbLine" type="MeshInstance3D" parent="Saturn_O"]
+mesh = SubResource("TorusMesh_2uuaj")
 
 [node name="Uranus_O" type="Node3D" parent="."]
 script = ExtResource("16_wun8x")
@@ -444,6 +542,9 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 20, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_35bkm")
 
+[node name="UROrbLine" type="MeshInstance3D" parent="Uranus_O"]
+mesh = SubResource("TorusMesh_1rfj2")
+
 [node name="Neptune_O" type="Node3D" parent="."]
 script = ExtResource("18_c8jnm")
 
@@ -476,5 +577,8 @@ vertical_alignment = 1
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 20, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_4xipw")
+
+[node name="NEOrbLine" type="MeshInstance3D" parent="Neptune_O"]
+mesh = SubResource("TorusMesh_4xipw")
 
 [connection signal="planet_num" from="Camera3D" to="Control/Big panel/Main Box/BoxContainer/Label2" method="_on_camera_3d_planet_num"]
