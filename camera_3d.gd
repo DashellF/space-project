@@ -4,6 +4,7 @@ extends Camera3D
 var freecamera := false
 var time := false
 var moon := false
+var mouse := false # no cursor
 
 var move_speed := 10.0
 var target_speed := 10.0
@@ -51,7 +52,10 @@ var target: Node3D
 
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if !mouse:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	planets = [
 		get_node("../Neptune_O/Neptune"),
@@ -170,6 +174,14 @@ func _process(delta):
 			target = null
 		else:
 			target = planets[i]
+	if Input.is_action_just_pressed("g_key"):
+		mouse = !mouse
+		if mouse:
+			Input.mouse_mode= Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+		
 
 
 ## Hi Dashell, lets work on these items: Name Tags, Orbit paths of diff planets, and Camera movement (freecam while spectating a particular planet)
