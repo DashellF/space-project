@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=41 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_rxlph"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://sun.tscn" id="2_81phd"]
@@ -46,6 +46,9 @@ viewport_path = NodePath("Sun/SU_tag/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c8jnm"]
 viewport_path = NodePath("Earth_O/Earth/EA_tag/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gvyvm"]
+viewport_path = NodePath("Earth_O/Earth/Earth Moon/EAM_tag/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4fo3t"]
 viewport_path = NodePath("Venus_O/Venus/VE_tag/SubViewport")
@@ -138,7 +141,7 @@ label_settings = SubResource("LabelSettings_35bkm")
 
 [node name="Label2" type="Label" parent="Control/Big panel/Main Box/Time"]
 layout_mode = 2
-text = "1/1/2025 00:00:00"
+text = "1/1/2025 00:00"
 label_settings = SubResource("LabelSettings_35bkm")
 script = ExtResource("4_4xipw")
 
@@ -208,6 +211,33 @@ texture = SubResource("ViewportTexture_c8jnm")
 
 [node name="Earth Moon" parent="Earth_O/Earth" instance=ExtResource("7_m37bs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.855, 0, 0)
+
+[node name="EAM_tag" type="Node3D" parent="Earth_O/Earth/Earth Moon"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="Earth_O/Earth/Earth Moon/EAM_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="Earth_O/Earth/Earth Moon/EAM_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Luna"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="Earth_O/Earth/Earth Moon/EAM_tag"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_gvyvm")
 
 [node name="Venus_O" type="Node3D" parent="."]
 script = ExtResource("7_4fhbr")

@@ -4,8 +4,17 @@ extends Camera3D
 var freecamera := false
 var time := false
 var moon := false
+
+
+
+
+# earth-specific camera variables
+var earth_luna_view = false
+var horizontal_lock_view := false  # J key
+var horizontal_view_height := 120 # height above Earth and Moon 
 var mouse := false # no cursor
 
+# velocity and acceleration
 var move_speed := 10.0
 var target_speed := 10.0
 var speed_acceleration := 5.0  # How quickly move_speed catches up to target_speed
@@ -30,6 +39,8 @@ var planets := []
 var i := 0
 var earth_moon := []
 var mars_moons := []
+var earth_luna_view_offset = Vector3(0,124,0)
+var cam_loc := []
 var k := 0
 var planets_names := [
 	"Neptune",
@@ -52,6 +63,7 @@ var target: Node3D
 
 
 func _ready():
+	
 	if !mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
@@ -71,6 +83,9 @@ func _ready():
 	
 	earth_moon = [
 		get_node("../Earth_O/Earth/Earth Moon")
+	]
+	cam_loc = [
+		get_node("../Sun")
 	]
 	
 	mars_moons = [
@@ -106,7 +121,28 @@ func _input(event):
 
 
 func _process(delta):
-	if target:
+	if target and i== 5 and horizontal_lock_view:
+		var earth = planets[5]
+		var moon = earth_moon[0]
+		
+		var midpoint = (earth.global_transform.origin + moon.global_transform.origin) * 0.5
+		var desired_position = midpoint + Vector3(0, horizontal_view_height, 0)
+		global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed)
+		
+		var earth_to_moon = moon.global_transform.origin - earth.global_transform.origin
+		var right = -earth_to_moon.normalized().cross(Vector3.UP) # normalized flips the side of the planet and moon, this way the EARTH is on the LEFT
+		look_at(midpoint, right) # 'up' is orbital right vector
+	# H key	
+	elif target and i == 5 and earth_luna_view:
+		var earth = planets[5]
+		var moon = earth_moon[0]
+		# position camera midway between Earth and Moon
+		var midpoint = (earth.global_transform.origin + moon.global_transform.origin) * 0.5
+		var desired_position = midpoint + earth_luna_view_offset
+		global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed)
+		# look at the midpoint between Earth and Moon
+		look_at(midpoint, Vector3.UP)
+	elif target:  # regular view
 		var desired_position = target.global_transform.origin + offset
 		global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed)
 		look_at(target.global_transform.origin, Vector3.UP)
@@ -135,6 +171,19 @@ func _process(delta):
 		if Input.is_action_just_pressed("left_arrow") and !time and i == 5:
 			moon = true
 			target = earth_moon[k]
+		if Input.is_action_just_pressed("h_key") and !time and i==5:
+			earth_luna_view = !earth_luna_view
+			if earth_luna_view:
+				# when entering Earth-Moon view, ensure that we're looking at Earth
+				horizontal_lock_view = false
+			# no need to change target when exiting, since we're already on the right target
+		if Input.is_action_just_pressed("j_key") and !time and i == 5:
+			horizontal_lock_view = !horizontal_lock_view
+			if horizontal_lock_view:
+				# disable other special views when in orbit view
+				earth_luna_view = false
+				
+				
 		if Input.is_action_just_pressed("left_arrow") and !time and i == 4:
 			moon = true
 			target = mars_moons[k]
