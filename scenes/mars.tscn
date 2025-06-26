@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://gq1jii67eufs"]
+
+[ext_resource type="Texture2D" uid="uid://dlyfnf4ehafri" path="res://assets/8k_mars.jpg" id="1_xn7oe"]
+[ext_resource type="Script" uid="uid://buwlrqdyyp37w" path="res://scenes/mars.gd" id="2_7t1d4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksmih"]
+albedo_texture = ExtResource("1_xn7oe")
+
+[sub_resource type="SphereMesh" id="SphereMesh_jwv7x"]
+material = SubResource("StandardMaterial3D_ksmih")
+radius = 2.106
+height = 4.212
+
+[node name="mars" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_jwv7x")
+script = ExtResource("2_7t1d4")

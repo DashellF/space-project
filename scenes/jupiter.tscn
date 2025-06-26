@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2vcl2p14ny47"]
+
+[ext_resource type="Texture2D" uid="uid://xtnsgygcgi22" path="res://assets/8k_jupiter.jpg" id="1_mvbpq"]
+[ext_resource type="Script" uid="uid://drp8153ilixgm" path="res://scenes/jupiter.gd" id="2_p8xdc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_si51w"]
+albedo_texture = ExtResource("1_mvbpq")
+
+[sub_resource type="SphereMesh" id="SphereMesh_i0uay"]
+material = SubResource("StandardMaterial3D_si51w")
+radius = 44.423
+height = 88.846
+
+[node name="jupiter" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_i0uay")
+script = ExtResource("2_p8xdc")

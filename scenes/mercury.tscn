@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://ijf1kly4ex0r"]
+
+[ext_resource type="Texture2D" uid="uid://cde4pq714dx40" path="res://assets/8k_mercury.jpg" id="1_x0maa"]
+[ext_resource type="Script" uid="uid://y58u8klv3x5e" path="res://scenes/mercury.gd" id="2_gaff4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4o7m"]
+albedo_texture = ExtResource("1_x0maa")
+
+[sub_resource type="SphereMesh" id="SphereMesh_brsq0"]
+material = SubResource("StandardMaterial3D_l4o7m")
+radius = 1.516
+height = 3.032
+
+[node name="mercury" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_brsq0")
+script = ExtResource("2_gaff4")

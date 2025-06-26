@@ -23,4 +23,5 @@ func _update_orbit_position():
 	var z = orbit_radius * sin(angle) + zcoord
 	mesh.transform.origin = Vector3(x, 0, z)
 	
+	
 #I know they also have a tilt but I didn't implement that either yet

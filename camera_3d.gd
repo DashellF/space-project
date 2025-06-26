@@ -111,20 +111,24 @@ func _change_time_scale(step: float):
 	var new_scale = clamp(Engine.time_scale + step, min_time_scale, max_time_scale)
 	Engine.time_scale = new_scale
 	emit_signal("time_scale_updated", new_scale)
+	
+	
+	
+	
 func _input(event):
-	if event is InputEventMouseButton and event.pressed and time:
-		# Scroll wheel: either affects time_scale or camera speed
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			_change_time_scale(-time_scale_step)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			_change_time_scale(time_scale_step)
-	elif freecamera:
-		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			target_speed = clamp(target_speed * 1.2, 1.0, 100000.0)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			target_speed = clamp(target_speed / 1.2, 1.0, 100000.0)
+	if event is InputEventMouseButton:
+		if event.pressed and time:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				_change_time_scale(-time_scale_step)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				_change_time_scale(time_scale_step)
+		elif freecamera:
+			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				target_speed = clamp(target_speed * 1.2, 1.0, 100000.0)
+			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				target_speed = clamp(target_speed / 1.2, 1.0, 100000.0)
 
-	if freecamera and event is InputEventMouseMotion:
+	elif event is InputEventMouseMotion and freecamera:
 		# Adjust sensitivity based on time scale to avoid wild jumps
 		var effective_sensitivity := mouse_sensitivity / Engine.time_scale
 		rotation_y -= event.relative.x * effective_sensitivity
