@@ -6,7 +6,11 @@ var time := false
 var moon := false
 
 
-
+# timer-specific variables
+signal time_scale_updated(new_scale)
+var min_time_scale := 0.1
+var max_time_scale := 10.0
+var time_scale_step := 0.1
 
 # earth-specific camera variables
 var earth_luna_view = false
@@ -63,6 +67,7 @@ var target: Node3D
 
 
 func _ready():
+	await get_tree().process_frame
 	
 	if !mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -96,20 +101,28 @@ func _ready():
 	offset = offsets[i]
 	target = planets[i]
 
+func _on_slower_button_pressed():
+	_change_time_scale(-time_scale_step) 
 
+func _on_faster_button_pressed():
+	_change_time_scale(time_scale_step)
+
+func _change_time_scale(step: float):
+	var new_scale = clamp(Engine.time_scale + step, min_time_scale, max_time_scale)
+	Engine.time_scale = new_scale
+	emit_signal("time_scale_updated", new_scale)
 func _input(event):
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and time:
 		# Scroll wheel: either affects time_scale or camera speed
-		if time:
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				Engine.time_scale = clamp(Engine.time_scale * 1.1, 0.1, 10.0)
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				Engine.time_scale = clamp(Engine.time_scale / 1.1, 0.1, 10.0)
-		elif freecamera:
-			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				target_speed = clamp(target_speed * 1.2, 1.0, 100000.0)
-			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				target_speed = clamp(target_speed / 1.2, 1.0, 100000.0)
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			_change_time_scale(-time_scale_step)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			_change_time_scale(time_scale_step)
+	elif freecamera:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			target_speed = clamp(target_speed * 1.2, 1.0, 100000.0)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			target_speed = clamp(target_speed / 1.2, 1.0, 100000.0)
 
 	if freecamera and event is InputEventMouseMotion:
 		# Adjust sensitivity based on time scale to avoid wild jumps

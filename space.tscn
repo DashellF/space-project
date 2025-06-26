@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=59 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_rxlph"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://sun.tscn" id="2_81phd"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ijf1kly4ex0r" path="res://mercury.tscn" id="3_qtpbo"]
 [ext_resource type="Script" uid="uid://big3kbbl8xv06" path="res://timer_script.gd" id="4_4xipw"]
 [ext_resource type="PackedScene" uid="uid://cit721c0gtcea" path="res://venus.tscn" id="4_ulv8f"]
+[ext_resource type="Script" uid="uid://bnqsndvsudyjg" path="res://button scripts/slowfastbuttons.gd" id="5_gvyvm"]
+[ext_resource type="Script" uid="uid://dvhmjgfc5cta0" path="res://timer speed label.gd" id="5_n7sbm"]
 [ext_resource type="PackedScene" uid="uid://tu7m01jtcekk" path="res://earth.tscn" id="5_ulv8f"]
 [ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://earth_orbit.gd" id="5_w5eul"]
 [ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://earth_moonO.gd" id="6_4v84m"]
@@ -224,6 +226,22 @@ layout_mode = 2
 text = "1/1/2025 00:00"
 label_settings = SubResource("LabelSettings_35bkm")
 script = ExtResource("4_4xipw")
+
+[node name="Time Controls" type="HBoxContainer" parent="Control/Big panel/Main Box"]
+layout_mode = 2
+script = ExtResource("5_gvyvm")
+
+[node name="SlowerButton" type="Button" parent="Control/Big panel/Main Box/Time Controls"]
+layout_mode = 2
+text = "Slower"
+
+[node name="SpeedLabel" type="Label" parent="Control/Big panel/Main Box/Time Controls"]
+layout_mode = 2
+script = ExtResource("5_n7sbm")
+
+[node name="FasterButton" type="Button" parent="Control/Big panel/Main Box/Time Controls"]
+layout_mode = 2
+text = "Faster"
 
 [node name="Sun" parent="." instance=ExtResource("2_81phd")]
 
