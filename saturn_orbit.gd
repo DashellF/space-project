@@ -3,17 +3,22 @@ extends Node3D
 @export var orbit_radius: float = 889910 #radius
 @export var orbit_speed: float = -0.0000244 # radians per hour
 
-var angle := 349.4332
+var angle := deg_to_rad(349.4332)
 var mesh: Node3D
 
 var xcoord := 0.0
 var zcoord := 0.0
 
 func _ready():
-	
+	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
+		global.connect("hours_updated", Callable(self, "_on_hours_updated"))
+		
 	mesh = $Saturn
 	_update_orbit_position()
 
+func _on_hours_updated(new_value: float):
+	angle = deg_to_rad(100.4643) + orbit_speed * new_value
+	
 func _process(delta):
 	angle += orbit_speed * delta
 	_update_orbit_position()

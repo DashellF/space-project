@@ -5,7 +5,7 @@ var custom_axis: Vector3
 
 func _ready():
 	var y_rot = deg_to_rad(270)
-	var z_rot = deg_to_rad(28.32)
+	var z_rot = deg_to_rad(28.3)
 
 	# start with UP axis
 	var axis = Vector3.UP

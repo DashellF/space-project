@@ -11,6 +11,8 @@ material = SubResource("StandardMaterial3D_l4o7m")
 radius = 1.516
 height = 3.032
 
-[node name="mercury" type="MeshInstance3D"]
+[node name="Node3D" type="Node3D"]
+
+[node name="mercury" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_brsq0")
 script = ExtResource("2_gaff4")

@@ -1,4 +1,4 @@
-extends MeshInstance3D
+extends Node3D
 
 @export var orbit_radiusD: float = 14.580
 @export var orbit_speedD: float = -0.2075
@@ -7,9 +7,17 @@ extends MeshInstance3D
 @export var orbit_speedP: float = -0.8206
 @onready var orbiting_bodyP: Node3D = $phobos
 
-var angleD := 18.6225
-var angleP := 66.5134
+var angleD := deg_to_rad(18.6225)
+var angleP := deg_to_rad(66.5134)
 
+func _ready() -> void:
+	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
+		global.connect("hours_updated", Callable(self, "_on_hours_updated"))
+		
+func _on_hours_updated(new_value: float):
+	angleD = deg_to_rad(18.6225) + orbit_speedD * new_value
+	angleP = deg_to_rad(66.5134) + orbit_speedP * new_value
+	
 func _process(delta):
 	angleD += orbit_speedD * delta
 	angleP += orbit_speedP * delta

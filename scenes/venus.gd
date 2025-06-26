@@ -4,7 +4,7 @@ extends MeshInstance3D
 var custom_axis: Vector3
 
 func _ready():
-	var y_rot = deg_to_rad(-177)
+	var y_rot = deg_to_rad(177)
 	var z_rot = deg_to_rad(177.4)
 
 	# start with UP axis

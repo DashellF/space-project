@@ -11,7 +11,9 @@ material = SubResource("StandardMaterial3D_qbwya")
 radius = 3.963
 height = 7.926
 
-[node name="earth" type="MeshInstance3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="Node3D" type="Node3D"]
+
+[node name="earth" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.01163e-08, 1.73599e-08, 1, 0.397148, 0.917755, 0, -0.917755, 0.397148, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_2bhor")
 script = ExtResource("2_2umt7")

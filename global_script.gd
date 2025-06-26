@@ -1,5 +1,8 @@
 extends Node
 
+signal hours_updated(new_value: float)
+
+var HOURSFROMBASETIME := 0.0
 var curr_minutes := 0.0 
 var year := 2025
 var month := 1
@@ -43,6 +46,32 @@ func advance_day():
 
 func get_formatted_time() -> String:
 	return "%02d/%02d/%04d  %02d:%02d" % [month, day, year, hour, minute]
+
+func get_hours_from_format() -> float:
+	var total_hours := 0.0
+	
+	#years
+	for y in range(2025, year):
+		total_hours += 8760  # 365 * 24
+		if is_leap_year(y):
+			total_hours += 24 
+
+	#months
+	update_days_in_february() 
+	for m in range(1, month):
+		total_hours += days_in_month[m] * 24
+
+	#days
+	total_hours += (day - 1) * 24
+
+	#hours/minutes
+	total_hours += hour + (minute / 60.0)
+
+	return total_hours
+
+func update_datetime():
+	HOURSFROMBASETIME = get_hours_from_format()
+	emit_signal("hours_updated", HOURSFROMBASETIME)
 
 func _ready():
 	set_process(true)

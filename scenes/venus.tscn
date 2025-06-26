@@ -11,6 +11,9 @@ material = SubResource("StandardMaterial3D_5cuv3")
 radius = 3.76
 height = 7.521
 
-[node name="venus" type="MeshInstance3D"]
+[node name="Node3D" type="Node3D"]
+
+[node name="venus" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.997602, 0.0453009, 0.052336, 0.045363, -0.998971, 0, 0.0522822, 0.00237412, -0.99863, 0, 0, 0)
 mesh = SubResource("SphereMesh_xbhmx")
 script = ExtResource("2_dmmqf")

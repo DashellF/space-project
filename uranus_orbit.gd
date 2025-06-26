@@ -3,24 +3,29 @@ extends Node3D
 @export var orbit_radius: float = 1814100 #radius
 @export var orbit_speed: float = -0.00000853 # radians per hour
 
-var angle := 55.3968
-var mesh: MeshInstance3D
+
+var angle := deg_to_rad(55.3968) # convert starting angle to radians
+var mesh: Node3D
 
 var xcoord := 0.0
 var zcoord := 0.0
 
 func _ready():
-	
+	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
+		global.connect("hours_updated", Callable(self, "_on_hours_updated"))
+		
 	mesh = $Uranus
 	_update_orbit_position()
 
+func _on_hours_updated(new_value: float):
+	angle = deg_to_rad(55.3968) + orbit_speed * new_value
+	
 func _process(delta):
-	angle += orbit_speed * delta
+	# delta is already in seconds
+	angle = fmod(angle + orbit_speed * delta, TAU)
 	_update_orbit_position()
 
 func _update_orbit_position():
 	var x = orbit_radius * cos(angle) + xcoord
 	var z = orbit_radius * sin(angle) + zcoord
-	mesh.transform.origin = Vector3(x, 0, z)
-	
-#I know they also have a tilt but I didn't implement that either yet
+	mesh.global_transform.origin = Vector3(x, 0, z)

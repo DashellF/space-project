@@ -4,6 +4,14 @@ extends HBoxContainer
 @onready var camera: Camera3D = get_node(camera_path) if camera_path else null
 
 func _ready():
+	await get_tree().process_frame
+	if !camera:
+		camera = get_viewport().get_camera_3d()
+		if !camera:
+			push_error("No camera found")
+			return
+	else:
+		printerr("camera not found :<")
 
 	camera = get_viewport().get_camera_3d()
 

@@ -11,6 +11,9 @@ material = SubResource("StandardMaterial3D_ucadt")
 radius = 15.759
 height = 31.518
 
-[node name="uranus" type="MeshInstance3D"]
+[node name="Node3D" type="Node3D"]
+
+[node name="uranus" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.135716, -0.990748, 0, 0.990748, -0.135716, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("SphereMesh_8q3j1")
 script = ExtResource("2_2m7sr")

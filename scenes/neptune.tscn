@@ -11,6 +11,9 @@ material = SubResource("StandardMaterial3D_qgwa2")
 radius = 15.299
 height = 30.598
 
-[node name="neptune" type="MeshInstance3D"]
+[node name="Node3D" type="Node3D"]
+
+[node name="neptune" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.04996e-08, -5.65345e-09, -1, 0.474088, 0.880477, 0, 0.880477, -0.474088, 1.19249e-08, 0, 0, 0)
 mesh = SubResource("SphereMesh_ms8sn")
 script = ExtResource("2_whiey")

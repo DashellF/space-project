@@ -11,6 +11,9 @@ material = SubResource("StandardMaterial3D_ksmih")
 radius = 2.106
 height = 4.212
 
-[node name="mars" type="MeshInstance3D"]
+[node name="Node3D" type="Node3D"]
+
+[node name="mars" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.234186, 0.1102, 0.965926, 0.425779, 0.904827, 0, -0.873996, 0.411271, -0.258819, 0, 0, 0)
 mesh = SubResource("SphereMesh_jwv7x")
 script = ExtResource("2_7t1d4")

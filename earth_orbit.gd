@@ -4,16 +4,21 @@ extends Node3D
 @export var orbit_speed: float = -0.000716 # radians per hour   (actual)
 #@export var orbit_speed: float = -0.001 # radians per hour   (test)
 
-var angle := 100.4643 #Thanks Caltech calculator!
-var mesh: MeshInstance3D
+var angle := deg_to_rad(100.4643) #Thanks Caltech calculator!
+var mesh: Node3D
 
 var xcoord := 0.0
 var zcoord := 0.0
 
 func _ready():
-	
+	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
+		global.connect("hours_updated", Callable(self, "_on_hours_updated"))
+
 	mesh = $Earth
 	_update_orbit_position()
+
+func _on_hours_updated(new_value: float):
+	angle = deg_to_rad(100.4643) + orbit_speed * new_value
 
 func _process(delta):
 	
