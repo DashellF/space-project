@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://gq1jii67eufs"]
 
 [ext_resource type="Texture2D" uid="uid://dlyfnf4ehafri" path="res://assets/8k_mars.jpg" id="1_xn7oe"]
-[ext_resource type="Script" uid="uid://buwlrqdyyp37w" path="res://scenes/mars.gd" id="2_7t1d4"]
+[ext_resource type="Script" uid="uid://buwlrqdyyp37w" path="res://planets/mars.gd" id="2_7t1d4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksmih"]
 albedo_texture = ExtResource("1_xn7oe")

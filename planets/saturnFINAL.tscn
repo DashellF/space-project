@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://ci0auj6fcj513" path="res://assets/Saturn_1_120536 (1)_saturn_diff.png" id="1_hh68f"]
 [ext_resource type="Texture2D" uid="uid://c7wh5q4fab61k" path="res://assets/8k_saturn_ring_alpha.png" id="2_8tm2n"]
-[ext_resource type="Script" uid="uid://s5av3us44f0p" path="res://scenes/rings_bottom.gd" id="2_ocfy8"]
+[ext_resource type="Script" uid="uid://s5av3us44f0p" path="res://planets/rings_bottom.gd" id="2_ocfy8"]
 [ext_resource type="Texture2D" uid="uid://crro80y20hii1" path="res://assets/Saturn_1_120536 (1)_saturn_rings_25sat_outterRings.png" id="3_l7i3i"]
-[ext_resource type="Script" uid="uid://bopigh5ygm75w" path="res://scenes/rings_top.gd" id="4_5r16n"]
-[ext_resource type="Script" uid="uid://r23io0rqj0ur" path="res://scenes/saturn_001.gd" id="6_u3s7t"]
+[ext_resource type="Script" uid="uid://bopigh5ygm75w" path="res://planets/rings_top.gd" id="4_5r16n"]
+[ext_resource type="Script" uid="uid://r23io0rqj0ur" path="res://planets/saturn_001.gd" id="6_u3s7t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rph71"]
 resource_name = "SaturnRings"

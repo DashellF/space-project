@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmbewo8nx4lmc"]
 
 [ext_resource type="Texture2D" uid="uid://dv6g46gfsp3hi" path="res://assets/2k_uranus.jpg" id="1_8q3j1"]
-[ext_resource type="Script" uid="uid://ctgeq6rfmjfvo" path="res://scenes/uranus.gd" id="2_2m7sr"]
+[ext_resource type="Script" uid="uid://ctgeq6rfmjfvo" path="res://planets/uranus.gd" id="2_2m7sr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucadt"]
 albedo_texture = ExtResource("1_8q3j1")

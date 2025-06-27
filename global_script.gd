@@ -1,6 +1,7 @@
 extends Node
 
 signal hours_updated(new_value: float)
+signal timespeed_updated(new_value: float)
 
 var HOURSFROMBASETIME := 0.0
 var curr_minutes := 0.0 
@@ -10,6 +11,7 @@ var day := 1
 var hour := 0
 var minute := 0
 var updated_time := ""  
+var timeSpeed = 1
 
 var days_in_month := {
 	1: 31, 2: 28, 3: 31, 4: 30, 5: 31, 6: 30,
@@ -50,12 +52,16 @@ func get_formatted_time() -> String:
 func get_hours_from_format() -> float:
 	var total_hours := 0.0
 	
-	#years
+	#years\
+	
 	for y in range(2025, year):
 		total_hours += 8760  # 365 * 24
 		if is_leap_year(y):
 			total_hours += 24 
-
+	for y in range(year, 2025):
+		total_hours -= 8760  # 365 * 24
+		if is_leap_year(y):
+			total_hours -= 24
 	#months
 	update_days_in_february() 
 	for m in range(1, month):
@@ -76,6 +82,10 @@ func update_datetime():
 func _ready():
 	set_process(true)
 	update_days_in_february()
+	
+func _speed_change_time(multiplier):
+	timeSpeed *= multiplier
+	emit_signal("timespeed_updated", timeSpeed)
 
 func _process(delta):
 	# with one second of real time = one hour of in-game time,

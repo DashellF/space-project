@@ -103,24 +103,14 @@ func _set_orbit_target(planet_node: Node3D):
 	else:
 		orbit_target = planet_node
 
-func _on_slower_button_pressed():
-	_change_time_scale(-time_scale_step)
-
-func _on_faster_button_pressed():
-	_change_time_scale(time_scale_step)
-
-func _change_time_scale(step: float):
-	var new_scale = clamp(Engine.time_scale + step, min_time_scale, max_time_scale)
-	Engine.time_scale = new_scale
-	emit_signal("time_scale_updated", new_scale)
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and time:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				_change_time_scale(-time_scale_step)
+				global._speed_change_time(1.1)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				_change_time_scale(time_scale_step)
+				global._speed_change_time(-1.1)
 		elif freecamera:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				target_speed = clamp(target_speed * 1.2, 1.0, 100000.0)
@@ -167,7 +157,7 @@ func _process(delta):
 
 			var sun_direction = (planets[0].global_transform.origin - planet_transform.origin).normalized()
 
-			var horizontal_rotation_deg := 0  # front-on sunlight
+			var horizontal_rotation_deg := 15  # front-on sunlight
 			var horizontal_rotation_rad := deg_to_rad(horizontal_rotation_deg)
 			var rotated_direction = sun_direction.rotated(Vector3.UP, horizontal_rotation_rad)
 
