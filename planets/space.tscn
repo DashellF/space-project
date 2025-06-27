@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=71 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_1ihek"]
 [ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_cafxb"]
@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://neptune_orbit.gd" id="27_lqow6"]
 [ext_resource type="PackedScene" uid="uid://nnexwfyo3n53" path="res://planets/neptune.tscn" id="28_weik8"]
 [ext_resource type="Script" uid="uid://c6btgjvckvcu2" path="res://planets/ne_orb_line.gd" id="29_cafxb"]
+[ext_resource type="Script" uid="uid://dbwsrjbb15ie5" path="res://2dUI/2dOrbits.gd" id="43_qvv86"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_81phd"]
 panorama = ExtResource("1_1ihek")
@@ -648,5 +649,40 @@ texture = SubResource("ViewportTexture_4xipw")
 [node name="NEOrbLine" type="MeshInstance3D" parent="Neptune_O"]
 mesh = SubResource("ImmediateMesh_jhjvm")
 script = ExtResource("29_cafxb")
+
+[node name="SolarSystemUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="TextureRect" parent="SolarSystemUI"]
+layout_mode = 0
+offset_right = 1277.0
+offset_bottom = 649.0
+
+[node name="SolarSystemContainer" type="Control" parent="SolarSystemUI"]
+layout_mode = 1
+anchor_left = 14.387
+anchor_top = 7.95
+anchor_right = 14.387
+anchor_bottom = 7.95
+offset_left = -575.48
+offset_top = -318.0
+offset_right = 575.52
+offset_bottom = 318.0
+script = ExtResource("43_qvv86")
+
+[node name="TitleLabel" type="Label" parent="SolarSystemUI/SolarSystemContainer"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 15.3
+anchor_top = 8.552
+anchor_right = 15.3
+anchor_bottom = 8.552
+offset_left = -53.0001
+offset_top = 41.92
+offset_right = 533.0
+offset_bottom = 305.92
 
 [connection signal="planet_num" from="Camera3D" to="Control/Big panel/Main Box/BoxContainer/Label2" method="_on_camera_3d_planet_num"]
