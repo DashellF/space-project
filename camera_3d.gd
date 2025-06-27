@@ -108,9 +108,9 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and time:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-				global._speed_change_time(1.1)
+				global._speed_change_time(0.1)
 			elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-				global._speed_change_time(-1.1)
+				global._speed_change_time(-0.1)
 		elif freecamera:
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				target_speed = clamp(target_speed * 1.2, 1.0, 100000.0)

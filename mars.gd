@@ -13,6 +13,8 @@ var angleP := deg_to_rad(66.5134)
 func _ready() -> void:
 	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
 		global.connect("hours_updated", Callable(self, "_on_hours_updated"))
+	if not global.is_connected("timespeed_updated", Callable(self, "_on_timespeed_updated")):
+		global.connect("timespeed_updated", Callable(self, "_on_timespeed_updated"))
 		
 func _on_hours_updated(new_value: float):
 	angleD = deg_to_rad(18.6225) + orbit_speedD * new_value
@@ -23,6 +25,10 @@ func _process(delta):
 	angleP += orbit_speedP * delta
 	_update_orbit_position()
 
+func _on_timespeed_updated(new_value: float):
+	orbit_speedD = -0.2075 * global.timeSpeed
+	orbit_speedP = -0.8206 * global.timeSpeed
+	
 func _update_orbit_position():
 	if orbiting_bodyD:
 		var x = orbit_radiusD * cos(angleD)

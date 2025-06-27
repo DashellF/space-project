@@ -2,7 +2,6 @@ extends Node3D
 
 @export var orbit_radius: float = 94471 #radius
 @export var orbit_speed: float = -0.000716 # radians per hour   (actual)
-#@export var orbit_speed: float = -0.001 # radians per hour   (test)
 
 var angle := deg_to_rad(100.4643) #Thanks Caltech calculator!
 var mesh: Node3D
@@ -24,10 +23,9 @@ func _on_hours_updated(new_value: float):
 	angle = deg_to_rad(100.4643) + orbit_speed * new_value
 	
 func _on_timespeed_updated(new_value: float):
-	orbit_speed = orbit_speed * new_value
+	orbit_speed = -0.000716 * global.timeSpeed
 
 func _process(delta):
-	
 	angle += orbit_speed * delta
 	_update_orbit_position()
 

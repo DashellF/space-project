@@ -12,12 +12,17 @@ var zcoord := 0.0
 func _ready():
 	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
 		global.connect("hours_updated", Callable(self, "_on_hours_updated"))
+	if not global.is_connected("timespeed_updated", Callable(self, "_on_timespeed_updated")):
+		global.connect("timespeed_updated", Callable(self, "_on_timespeed_updated"))
 		
 	mesh = $Saturn
 	_update_orbit_position()
 
 func _on_hours_updated(new_value: float):
 	angle = deg_to_rad(100.4643) + orbit_speed * new_value
+	
+func _on_timespeed_updated(new_value: float):
+	orbit_speed = -0.0000244 * global.timeSpeed
 	
 func _process(delta):
 	angle += orbit_speed * delta
