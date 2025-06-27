@@ -1,8 +1,8 @@
 extends Control
 
 
-@onready var space_root: Node3D = get_node("/root/Space")  # Your root 3D scene
-@onready var sun_node: Node3D = space_root.get_node("Sun")  # Sun is child of Space
+@onready var space_root: Node3D = get_node("/root/Space") 
+@onready var sun_node: Node3D = space_root.get_node("Sun")  
 @onready var planet_nodes: Array[Node3D] = [
 	space_root.get_node("Mercury_O/Mercury"),
 	space_root.get_node("Venus_O/Venus"),
@@ -25,12 +25,12 @@ var planet_data := [
 	{"name": "Neptune", "size": 16, "color": Color(0.2, 0.4, 0.9)}
 ]
 
-# Display settings
-var scale_factor := 0.01	# Scale down 3D positions to 2D
+# display settings
+var scale_factor := 0.01
 var min_scale := 0.005
 var max_scale := 0.05
 var show_paths := true
-var ui_visible := false	# Changed from 'visible' to avoid conflict
+var ui_visible := false	
 var target_scale_margin := 0.9
 
 func _ready():
@@ -74,22 +74,22 @@ func _draw():
 		
 		var planet_pos_3d: Vector3 = planet_3d.global_position - sun_node.global_position
 		var planet_pos_2d := center + Vector2(
-	planet_pos_3d.x * scale_factor,  # X coordinate (float)
-	-planet_pos_3d.z * scale_factor   # Z coordinate (flipped and scaled)
+	planet_pos_3d.x * scale_factor,
+	-planet_pos_3d.z * scale_factor 
 )
 
 		if show_paths:
 			var orbit_radius: float = (planet_pos_3d - sun_pos_3d).length() * scale_factor
 			draw_arc(center, orbit_radius, 0, TAU, 100, Color(0.3, 0.3, 0.3, 0.2), 1.0)
 		
-		# Draw planet
+		# planet
 		draw_circle(planet_pos_2d, planet.size, planet.color)
 		
-		# Draw ring for Saturn
+		# saturn's rings
 		if planet.get("ring", false):
 			draw_arc(planet_pos_2d, planet.size * 1.5, 0, TAU, 30, Color(0.8, 0.7, 0.6), 2.0)
 		
-		# Draw name
+		# name
 		var font = get_theme_default_font()
 		draw_string(font, planet_pos_2d + Vector2(planet.size + 5, 0), planet.name, 
 			   HORIZONTAL_ALIGNMENT_LEFT, -1, 12, Color.WHITE)
@@ -99,12 +99,12 @@ func _convert_3d_to_2d(pos_3d: Vector3) -> Vector2:
 	return center + Vector2(pos_3d.x, -pos_3d.z) * scale_factor
 
 func _input(event):
-	# Toggle with U key
+	# U key toggle
 	if event.is_action_pressed("ui_toggle_solar_map"):
 		ui_visible = !ui_visible
 		show() if ui_visible else hide()
 	
-	# Zoom controls
+	# zooming
 	if ui_visible and event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			scale_factor = clamp(scale_factor * 1.1, min_scale, max_scale)

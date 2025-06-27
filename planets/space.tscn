@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=70 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_1ihek"]
 [ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_cafxb"]
@@ -6,40 +6,39 @@
 [ext_resource type="Script" uid="uid://big3kbbl8xv06" path="res://timer_script.gd" id="4_ibxys"]
 [ext_resource type="Script" uid="uid://byhkvxynrg788" path="res://planets/change_time.gd" id="5_67dfk"]
 [ext_resource type="Script" uid="uid://bnqsndvsudyjg" path="res://button scripts/slowfastbuttons.gd" id="5_kgxdp"]
-[ext_resource type="Script" uid="uid://dvhmjgfc5cta0" path="res://timer speed label.gd" id="6_168cx"]
 [ext_resource type="Script" uid="uid://cjtebbrqlyjol" path="res://planets/start_time_input.gd" id="7_cjff7"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://planets/sun.tscn" id="7_wftqc"]
 [ext_resource type="Script" uid="uid://cb5ulyd6w8ius" path="res://planets/end_time_input.gd" id="8_xhwas"]
-[ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://earth_orbit.gd" id="8_yhx7r"]
+[ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://orbits/earth_orbit.gd" id="8_yhx7r"]
 [ext_resource type="PackedScene" uid="uid://tu7m01jtcekk" path="res://planets/earth.tscn" id="9_iodg4"]
-[ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://earth_moonO.gd" id="10_3rbkj"]
+[ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://orbits/earth_moonO.gd" id="10_3rbkj"]
 [ext_resource type="PackedScene" uid="uid://cwy75yc77u8n4" path="res://planets/earth_moon.tscn" id="11_8avvp"]
-[ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://venus_orbit.gd" id="12_5m0ew"]
+[ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://orbits/venus_orbit.gd" id="12_5m0ew"]
 [ext_resource type="Script" uid="uid://ejuvhnit37h2" path="res://planets/ea_orb_line.gd" id="12_8avvp"]
 [ext_resource type="Script" uid="uid://48lrvbqh14pm" path="res://planets/eam_orb_line.gd" id="12_cjff7"]
 [ext_resource type="PackedScene" uid="uid://cit721c0gtcea" path="res://planets/venus.tscn" id="13_cjff7"]
-[ext_resource type="Script" uid="uid://berodv21tqgot" path="res://mercury_orbit.gd" id="14_xhwas"]
+[ext_resource type="Script" uid="uid://berodv21tqgot" path="res://orbits/mercury_orbit.gd" id="14_xhwas"]
 [ext_resource type="Script" uid="uid://bph11a4xtskfm" path="res://planets/ve_orb_line.gd" id="15_5m0ew"]
 [ext_resource type="PackedScene" uid="uid://ijf1kly4ex0r" path="res://planets/mercury.tscn" id="15_67dfk"]
 [ext_resource type="Script" uid="uid://cfvxgoi35mc2p" path="res://planets/me_orb_line.gd" id="16_iodg4"]
-[ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://mars_orbit.gd" id="16_vomel"]
+[ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://orbits/mars_orbit.gd" id="16_vomel"]
 [ext_resource type="PackedScene" uid="uid://gq1jii67eufs" path="res://planets/mars.tscn" id="17_p1omw"]
 [ext_resource type="Script" uid="uid://g4ralivnvkkm" path="res://mars.gd" id="18_g7h33"]
 [ext_resource type="PackedScene" uid="uid://7cu4rq6ekttr" path="res://planets/phobos.tscn" id="19_y1g2g"]
 [ext_resource type="PackedScene" uid="uid://dh80prevuwpmd" path="res://planets/deimos.tscn" id="20_17l4g"]
 [ext_resource type="Script" uid="uid://d0fws8f4tc68h" path="res://planets/ma_orb_line.gd" id="21_168cx"]
-[ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://jupiter_orbit.gd" id="21_hcqao"]
+[ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://orbits/jupiter_orbit.gd" id="21_hcqao"]
 [ext_resource type="Script" uid="uid://734s3tj0gel8" path="res://planets/ph_orb_line.gd" id="21_wftqc"]
 [ext_resource type="PackedScene" uid="uid://b2vcl2p14ny47" path="res://planets/jupiter.tscn" id="22_mw0qc"]
 [ext_resource type="Script" uid="uid://xeoexe7t75sd" path="res://planets/de_orb_line.gd" id="22_yhx7r"]
 [ext_resource type="Script" uid="uid://dqdyp225wxd8y" path="res://planets/ju_orb_line.gd" id="23_kgxdp"]
-[ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://saturn_orbit.gd" id="23_ykhyk"]
+[ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://orbits/saturn_orbit.gd" id="23_ykhyk"]
 [ext_resource type="PackedScene" uid="uid://dsbhfk6f8o7qb" path="res://planets/saturnFINAL.tscn" id="24_drbii"]
-[ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://uranus_orbit.gd" id="25_02biu"]
+[ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://orbits/uranus_orbit.gd" id="25_02biu"]
 [ext_resource type="Script" uid="uid://0xop0kea6fch" path="res://planets/sa_orb_line.gd" id="25_ibxys"]
 [ext_resource type="PackedScene" uid="uid://bmbewo8nx4lmc" path="res://planets/uranus.tscn" id="26_uivhv"]
 [ext_resource type="Script" uid="uid://cosn8jqe1awkn" path="res://planets/ur_orb_line.gd" id="27_jhjvm"]
-[ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://neptune_orbit.gd" id="27_lqow6"]
+[ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://orbits/neptune_orbit.gd" id="27_lqow6"]
 [ext_resource type="PackedScene" uid="uid://nnexwfyo3n53" path="res://planets/neptune.tscn" id="28_weik8"]
 [ext_resource type="Script" uid="uid://c6btgjvckvcu2" path="res://planets/ne_orb_line.gd" id="29_cafxb"]
 [ext_resource type="Script" uid="uid://dbwsrjbb15ie5" path="res://2dUI/2dOrbits.gd" id="43_qvv86"]
@@ -204,7 +203,6 @@ text = "Slower"
 
 [node name="SpeedLabel" type="Label" parent="Control/Big panel/Main Box/Time Controls"]
 layout_mode = 2
-script = ExtResource("6_168cx")
 
 [node name="FasterButton" type="Button" parent="Control/Big panel/Main Box/Time Controls"]
 layout_mode = 2
@@ -650,18 +648,19 @@ texture = SubResource("ViewportTexture_4xipw")
 mesh = SubResource("ImmediateMesh_jhjvm")
 script = ExtResource("29_cafxb")
 
-[node name="SolarSystemUI" type="Control" parent="."]
+[node name="SolarSystemUI (not done)" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Background" type="TextureRect" parent="SolarSystemUI"]
+[node name="Background" type="TextureRect" parent="SolarSystemUI (not done)"]
+visible = false
 layout_mode = 0
 offset_right = 1277.0
 offset_bottom = 649.0
 
-[node name="SolarSystemContainer" type="Control" parent="SolarSystemUI"]
+[node name="SolarSystemContainer" type="Control" parent="SolarSystemUI (not done)"]
 layout_mode = 1
 anchor_left = 14.387
 anchor_top = 7.95
@@ -673,7 +672,7 @@ offset_right = 575.52
 offset_bottom = 318.0
 script = ExtResource("43_qvv86")
 
-[node name="TitleLabel" type="Label" parent="SolarSystemUI/SolarSystemContainer"]
+[node name="TitleLabel" type="Label" parent="SolarSystemUI (not done)/SolarSystemContainer"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 15.3

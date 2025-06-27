@@ -55,7 +55,7 @@ signal planet_num(planet)
 @export var follow_speed: float = 5.0
 
 var target: Node3D
-var orbit_target: Node3D  # Actual node we orbit around (planet center node)
+var orbit_target: Node3D  # the actual node we orbit around (planet center node)
 
 func _ready():
 	await get_tree().process_frame
@@ -131,7 +131,7 @@ func _process(delta):
 		var moon = earth_moon[0]
 		var midpoint = (earth.global_transform.origin + moon.global_transform.origin) * 0.5
 		var desired_position = midpoint + Vector3(0, horizontal_view_height, 0)
-		global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed)
+		global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed / Engine.time_scale)
 		var earth_to_moon = moon.global_transform.origin - earth.global_transform.origin
 		var right = -earth_to_moon.normalized().cross(Vector3.UP)
 		look_at(midpoint, right)
@@ -146,14 +146,14 @@ func _process(delta):
 		var planet_transform = target.global_transform
 
 		if i == 0:
-			# Special case for Sun: place camera at a fixed offset away from sun center
+			# special case for the sun: place camera at a fixed offset away from sun center
 			var sun_offset_distance = 1500.0  # tweak this to a comfortable distance
 			var sun_camera_offset = Vector3(0, 500, sun_offset_distance)  # above and forward
 			var desired_position = planet_transform.origin + sun_camera_offset
-			global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed)
+			global_transform.origin = global_transform.origin.lerp(desired_position, delta * follow_speed / Engine.time_scale)
 			look_at(planet_transform.origin, Vector3.UP)
 		else:
-			# Normal planets: position based on sun direction + rotations
+			# normal planets are positioned based on sun direction + rotations
 
 			var sun_direction = (planets[0].global_transform.origin - planet_transform.origin).normalized()
 
@@ -172,12 +172,9 @@ func _process(delta):
 			var offset_distance = offsets[i].length()
 			var camera_position = planet_transform.origin + rotated_direction * offset_distance
 
-			global_transform.origin = global_transform.origin.lerp(camera_position, delta * follow_speed)
+			global_transform.origin = global_transform.origin.lerp(camera_position, delta * follow_speed / Engine.time_scale)
 			look_at(planet_transform.origin, Vector3.UP)
-
-
-
-
+			
 	if !freecamera:
 		if Input.is_action_just_pressed("up_arrow") and !time:
 			if moon:
@@ -236,7 +233,7 @@ func _process(delta):
 			orbit_distance = orbit_distances[i]
 			emit_signal("planet_num", planets_names[i])
 	else:
-		move_speed = lerp(move_speed, target_speed, delta * speed_acceleration)
+		move_speed = lerp(move_speed, target_speed, delta * speed_acceleration / Engine.time_scale)
 		var direction := Vector3.ZERO
 		if Input.is_action_pressed("up_arrow"):
 			direction -= transform.basis.z

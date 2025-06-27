@@ -84,7 +84,8 @@ func _ready():
 	update_days_in_february()
 	
 func _speed_change_time(multiplier):
-	timeSpeed *= multiplier
+	timeSpeed = clamp (timeSpeed+multiplier, 0.1, 100.0)
+	Engine.time_scale = timeSpeed
 	emit_signal("timespeed_updated", timeSpeed)
 
 func _process(delta):

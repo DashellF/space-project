@@ -1,5 +1,5 @@
 extends Node3D
-
+# for some reason putting this in the planets folder doesnt bode out so well; gives an overwrite warning
 @export var orbit_radiusD: float = 14.580
 @export var orbit_speedD: float = -0.2075
 @onready var orbiting_bodyD: Node3D = $deimos
@@ -32,3 +32,5 @@ func _update_orbit_position():
 		var x = orbit_radiusP * cos(angleP)
 		var z = orbit_radiusP * sin(angleP)
 		orbiting_bodyP.global_position = global_position + Vector3(x, 0, z)
+
+# for some reason putting this in the planets folder doesnt bode out so well; gives an overwrite warning
