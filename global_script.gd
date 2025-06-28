@@ -83,14 +83,12 @@ func _ready():
 	set_process(true)
 	update_days_in_february()
 	
-func _speed_change_time(addition):
-	timeSpeed += addition
-	if timeSpeed < 0:
-		timeSpeed = 0
-	if timeSpeed > 24:
-		timeSpeed = 24
+func _speed_change_time(multiplier):
+	timeSpeed += multiplier
+	timeSpeed = clamp(timeSpeed, 0.1, 100.0)
+	Engine.time_scale = timeSpeed
 	emit_signal("timespeed_updated", timeSpeed)
-
+	
 
 func _process(delta):
 	# with one second of real time = one hour of in-game time,

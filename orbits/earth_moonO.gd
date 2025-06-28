@@ -2,7 +2,7 @@ extends Node3D
 
 @export var orbit_radius: float = 238.9
 @export var orbit_speed: float = -0.00958
-@onready var orbiting_body: MeshInstance3D = $"Earth Moon"
+@onready var orbiting_body: Node3D = $"Earth Moon"
 
 var angle := deg_to_rad(301.5374)
 
