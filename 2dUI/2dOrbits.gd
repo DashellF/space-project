@@ -71,13 +71,13 @@ func _draw():
 		var planet_pos_2d = Vector2(planet_pos_3d.x, planet_pos_3d.z) * view_scale + center
 		var orbit_radius = Vector2(planet_pos_3d.x, planet_pos_3d.z).length() * view_scale
 		draw_arc(center, orbit_radius, 0, 2 * PI, 100, Color(1, 1, 1, 0.2), 1.0)
-		draw_circle(planet_pos_2d + Vector2(data["size"] * view_scale, 0), data["size"] * view_scale, data["color"])
+		draw_circle(planet_pos_2d , data["size"] * view_scale, data["color"])
 		if data.get("ring", false):
 			draw_arc(planet_pos_2d + Vector2(data["size"] * view_scale, 0), data["size"] * view_scale * 1.5, 0, 2 * PI, 30, 
 				Color(0.8, 0.8, 0.6, 0.5), 2.0 * view_scale)
 		var font = get_theme_default_font()
 		var font_size = get_theme_default_font_size()
-		draw_string(font, planet_pos_2d + Vector2(data["size"] * view_scale, 0), 
+		draw_string(font, planet_pos_2d , 
 			data["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
 
 func _input(event):

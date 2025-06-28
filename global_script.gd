@@ -92,7 +92,7 @@ func _speed_change_time(multiplier):
 
 func _process(delta):
 	# with one second of real time = one hour of in-game time,
-	curr_minutes += delta * 60
+	curr_minutes += delta * 60 * timeSpeed
 	while curr_minutes >= 1.0:
 		curr_minutes -= 1.0
 		advance_minute()
