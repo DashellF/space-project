@@ -130,12 +130,13 @@ omni_shadow_mode = 0
 environment = SubResource("Environment_rxlph")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.778e+06, 0, 7.378)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5000, 5000, 4000)
 current = true
 far = 100000.0
 script = ExtResource("2_cafxb")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_top = -6.0
@@ -153,7 +154,7 @@ offset_left = -200.0
 offset_top = -300.0
 grow_horizontal = 0
 grow_vertical = 0
-tooltip_text = "Hi
+tooltip_text = "This is the area that adjusts time!
 "
 
 [node name="Main Box" type="VBoxContainer" parent="Control/Big panel"]
@@ -261,6 +262,47 @@ popup/item_6/id = 7
 popup/item_7/text = "Neptune"
 popup/item_7/id = 8
 
+[node name="Left panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 300.0
+grow_vertical = 0
+tooltip_text = "This is the area that has controls!
+"
+
+[node name="Main Box" type="VBoxContainer" parent="Control/Left panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.41
+anchor_bottom = 0.268
+offset_right = 318.0
+offset_bottom = 119.6
+
+[node name="BoxContainer" type="BoxContainer" parent="Control/Left panel/Main Box"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Left panel/Main Box/BoxContainer"]
+layout_mode = 2
+text = "Controls:
+w/up: move farther from sun
+s/down: move closer to sun
+a/d: toggle moons
+g: toggle mouse
+u: toggle minimap
+f: toggle freecam mode
+e: exit"
+
+[node name="TITLE" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5000, 5000, 0)
+pixel_size = 24.3859
+billboard = 1
+text = "LOGO HERE
+
+Press any key to continue."
+
 [node name="Sun" parent="." instance=ExtResource("7_wftqc")]
 
 [node name="SU_tag" type="Node3D" parent="Sun"]
@@ -359,6 +401,7 @@ mesh = SubResource("ImmediateMesh_67dfk")
 script = ExtResource("12_cjff7")
 
 [node name="EAOrbLine" type="MeshInstance3D" parent="Earth_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_cjff7")
 script = ExtResource("12_8avvp")
 
@@ -396,6 +439,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_4fo3t")
 
 [node name="VEOrbLine" type="MeshInstance3D" parent="Venus_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_xhwas")
 script = ExtResource("15_5m0ew")
 
@@ -434,6 +478,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_4v84m")
 
 [node name="MEOrbLine" type="MeshInstance3D" parent="Mercury_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_3rbkj")
 script = ExtResource("16_iodg4")
 
@@ -540,6 +585,7 @@ mesh = SubResource("ImmediateMesh_iodg4")
 script = ExtResource("22_yhx7r")
 
 [node name="MAOrbLine" type="MeshInstance3D" parent="Mars_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_wftqc")
 script = ExtResource("21_168cx")
 
@@ -577,6 +623,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_55yc6")
 
 [node name="JUOrbLine" type="MeshInstance3D" parent="Jupiter_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_168cx")
 script = ExtResource("23_kgxdp")
 
@@ -614,6 +661,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_20dnj")
 
 [node name="SAOrbLine" type="MeshInstance3D" parent="Saturn_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_kgxdp")
 script = ExtResource("25_ibxys")
 
@@ -651,6 +699,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_35bkm")
 
 [node name="UROrbLine" type="MeshInstance3D" parent="Uranus_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_ibxys")
 script = ExtResource("27_jhjvm")
 
@@ -688,6 +737,7 @@ billboard = 1
 texture = SubResource("ViewportTexture_4xipw")
 
 [node name="NEOrbLine" type="MeshInstance3D" parent="Neptune_O"]
+visible = false
 mesh = SubResource("ImmediateMesh_jhjvm")
 script = ExtResource("29_cafxb")
 

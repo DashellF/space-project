@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://tspk0tagw5dm"]
+[gd_scene load_steps=6 format=3 uid="uid://tspk0tagw5dm"]
 
 [ext_resource type="Texture2D" uid="uid://b7482p2n56185" path="res://assets/8k_sun.jpg" id="1_iveel"]
+[ext_resource type="Script" uid="uid://cw84jk0en30l" path="res://planets/sun.gd" id="2_0wui8"]
 
 [sub_resource type="Shader" id="Shader_gtd5v"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's StandardMaterial3D.
@@ -82,53 +83,11 @@ material = SubResource("ShaderMaterial_rxlph")
 radius = 432.69
 height = 865.38
 
-[sub_resource type="Animation" id="Animation_gtd5v"]
-length = 573.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 573.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
-}
+[node name="Node3D" type="Node3D"]
 
-[sub_resource type="Animation" id="Animation_iveel"]
-resource_name = "ROTATE"
-length = 597.95
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 597.95),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_enfo0"]
-_data = {
-&"RESET": SubResource("Animation_gtd5v"),
-&"ROTATE": SubResource("Animation_iveel")
-}
-
-[node name="Sun" type="MeshInstance3D"]
+[node name="Sun" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9612, 36.4766, 25.3952)
 gi_mode = 2
 gi_lightmap_texel_scale = 5.662
 mesh = SubResource("SphereMesh_enfo0")
-
-[node name="Rotate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_enfo0")
-}
-autoplay = "RESET"
+script = ExtResource("2_0wui8")

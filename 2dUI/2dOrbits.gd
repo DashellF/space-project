@@ -2,6 +2,7 @@ extends Control
 # so far, so good. UI matches up. However, the 2d planet circles are not drawing...
 @onready var space_root: Node3D = get_node("/root/Space") 
 @onready var sun_node: Node3D = space_root.get_node("Sun")  
+@onready var sun_texture: Texture2D = preload("res://2dUI/planet pngs/b4fe772749bfdb184cfac3cad9e030a3.png")
 @onready var planet_nodes: Array[Node3D] = [
 	space_root.get_node("Mercury_O/Mercury"),
 	space_root.get_node("Venus_O/Venus"),
@@ -13,15 +14,28 @@ extends Control
 	space_root.get_node("Neptune_O/Neptune")
 ]
 
+
+var planet_textures: Dictionary = {
+	"Mercury": preload("res://2dUI/planet pngs/42daa67829b564a1659432529f299dd6.png"),
+	"Venus": preload("res://2dUI/planet pngs/bc30731f4f6ce9b58e072855cbf3d9f1.png"),
+	"Earth": preload("res://2dUI/planet pngs/5daf8d18e990798ae9b1b31d393bee9d.png"),
+	"Mars": preload("res://2dUI/planet pngs/3ee9a901bc508a4e396f024e45020fde.png"),
+	"Jupiter": preload("res://2dUI/planet pngs/e108e930cfe5e1357a45c434d358eca2.png"),
+	"Saturn": preload("res://2dUI/planet pngs/7ebf9be67c1a399f790da9d9cc0a9e6d.png"),
+	"Uranus": preload("res://2dUI/planet pngs/5189a741170de2ed50284d6101c672e3.png"),
+	"Neptune": preload("res://2dUI/planet pngs/ea0e780cf59d9383b20cf02ddb15d328.png")
+}
+
+
 var planet_data := [
-	{"name": "Mercury", "size": 8, "color": Color(0.7, 0.7, 0.7)},
-	{"name": "Venus", "size": 12, "color": Color(0.9, 0.6, 0.2)},
+	{"name": "Mercury", "size": 10, "color": Color(0.7, 0.7, 0.7)},
+	{"name": "Venus", "size": 15, "color": Color(0.9, 0.6, 0.2)},
 	{"name": "Earth", "size": 12, "color": Color(0.2, 0.4, 0.8)},
-	{"name": "Mars", "size": 10, "color": Color(0.8, 0.3, 0.2)},
-	{"name": "Jupiter", "size": 20, "color": Color(0.8, 0.6, 0.4)},
-	{"name": "Saturn", "size": 18, "color": Color(0.9, 0.8, 0.5), "ring": true},
-	{"name": "Uranus", "size": 16, "color": Color(0.6, 0.8, 0.9)},
-	{"name": "Neptune", "size": 16, "color": Color(0.2, 0.4, 0.9)}
+	{"name": "Mars", "size": 40, "color": Color(0.8, 0.3, 0.2)},
+	{"name": "Jupiter", "size": 40, "color": Color(0.8, 0.6, 0.4)},
+	{"name": "Saturn", "size": 200, "color": Color(0.9, 0.8, 0.5), "ring": true},
+	{"name": "Uranus", "size": 500, "color": Color(0.6, 0.8, 0.9)},
+	{"name": "Neptune", "size": 600, "color": Color(0.2, 0.4, 0.9)}
 ]
 
 
@@ -62,7 +76,12 @@ func _draw():
 	
 	var center = size / 2 + center_offset
 	var sun_pos_3d = sun_node.global_position
-	draw_circle(center, 20 * view_scale, Color.YELLOW)
+	if sun_texture:
+		var sun_scale := 30.0  # or whatever size boost you want
+		var tex_size = sun_texture.get_size() * view_scale * sun_scale
+		var tex_position = center - tex_size / 2
+		draw_texture_rect(sun_texture, Rect2(tex_position, tex_size), false)
+	
 	
 	for i in planet_nodes.size():
 		var planet = planet_nodes[i]
@@ -71,7 +90,18 @@ func _draw():
 		var planet_pos_2d = Vector2(planet_pos_3d.x, planet_pos_3d.z) * view_scale + center
 		var orbit_radius = Vector2(planet_pos_3d.x, planet_pos_3d.z).length() * view_scale
 		draw_arc(center, orbit_radius, 0, 2 * PI, 100, Color(1, 1, 1, 0.2), 1.0)
-		draw_circle(planet_pos_2d , data["size"] * view_scale, data["color"])
+		
+		
+		var texture = planet_textures.get(data["name"], null)
+		if texture:
+			var tex_size = texture.get_size() * view_scale * data["size"]
+			var tex_pos = planet_pos_2d - tex_size / 2
+			draw_texture_rect(texture, Rect2(tex_pos, tex_size), false)
+		else:
+			draw_circle(planet_pos_2d, data["size"] * view_scale, data["color"])
+
+
+
 		if data.get("ring", false):
 			draw_arc(planet_pos_2d + Vector2(data["size"] * view_scale, 0), data["size"] * view_scale * 1.5, 0, 2 * PI, 30, 
 				Color(0.8, 0.8, 0.6, 0.5), 2.0 * view_scale)
