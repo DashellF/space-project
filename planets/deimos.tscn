@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=4 uid="uid://dh80prevuwpmd"]
+[gd_scene load_steps=6 format=4 uid="uid://dh80prevuwpmd"]
 
 [ext_resource type="Texture2D" uid="uid://bd0ycx1rq5gjm" path="res://assets/24879_Deimos_1_1000_deimos_tex_01.png" id="1_os1av"]
+[ext_resource type="Script" uid="uid://h4gkktswge0f" path="res://planets/deimos.gd" id="2_wmnqe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kktfc"]
 resource_name = "deimos_tex_01"
@@ -49,3 +50,4 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0)
 mesh = SubResource("ArrayMesh_smvri")
 skeleton = NodePath("")
+script = ExtResource("2_wmnqe")
