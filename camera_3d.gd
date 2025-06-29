@@ -62,6 +62,8 @@ var orbit_target: Node3D  # the actual node we orbit around (planet center node)
 
 func _ready():
 	await get_tree().process_frame
+	if not global.is_connected("timespeed_updated", Callable(self, "_on_timespeed_updated")):
+		global.connect("timespeed_updated", Callable(self, "_on_timespeed_updated"))
 	
 	if mouse:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -115,7 +117,8 @@ func _set_orbit_target(planet_node: Node3D):
 		orbit_target = planet_node
 
 
-
+func _on_timespeed_updated(new_value: float):
+	follow_speed = 5 * new_value
 
 func _process(delta):
 	if !titleScreen:

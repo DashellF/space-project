@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://suys0h2jo32g"]
+
+[ext_resource type="Script" uid="uid://b76k1h72caff5" path="res://rocket.gd" id="1_fj03e"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5gt1y"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="rocket" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_5gt1y")
+script = ExtResource("1_fj03e")
