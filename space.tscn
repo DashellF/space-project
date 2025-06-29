@@ -305,11 +305,9 @@ text = "LOGO HERE
 
 Press any key to continue."
 
-[node name="rocket" parent="." node_paths=PackedStringArray("planet_nodes", "SelectUI") instance=ExtResource("9_tjk8i")]
+[node name="rocket" parent="." instance=ExtResource("9_tjk8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4390.71, 72.8106, -144.805)
 script = ExtResource("9_ie4lf")
-planet_nodes = [NodePath("../Mercury_O/Mercury"), NodePath("../Venus_O/Venus"), NodePath("../Earth_O/Earth"), NodePath("../Mars_O/Mars"), NodePath("../Jupiter_O/Jupiter"), NodePath("../Saturn_O/Saturn"), NodePath("../Uranus_O/Uranus"), NodePath("../Neptune_O/Neptune")]
-SelectUI = NodePath("../Control/Big panel/Main Box/SelectUI")
 
 [node name="rocket" parent="rocket" index="0"]
 script = null
