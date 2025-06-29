@@ -19,7 +19,11 @@ func _process(delta):
 
 func _on_hours_updated(new_value: float):
 	angle = deg_to_rad(301.5374) + orbit_speed * new_value
-
+func _get_position_in_time(hours):
+	var newAngle = deg_to_rad(301.5374) + orbit_speed * hours
+	var x = orbit_radius * cos(angle)
+	var z = orbit_radius * sin(angle)
+	return [x, z]
 func _on_timespeed_updated(new_value: float):
 	orbit_speed = -0.00958 * global.timeSpeed
 

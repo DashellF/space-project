@@ -277,7 +277,13 @@ func _process(delta):
 		if Input.is_action_just_pressed("r_key"):
 			rocket = !rocket
 			if rocket:
+				if i != 0:
+					orbit_lines[i].visible = false
+				i = rockets.planet_index
+				target = planets[i]
+				_set_orbit_target(target)
 				target = rockets
+				
 			else:
 				target = planets[i]
 				
@@ -286,7 +292,7 @@ func _input(event):
 		if event is not InputEventMouseMotion:
 			if event is not InputEventMouseButton:
 				await get_tree().create_timer(0.1).timeout
-				
+				mouse = false
 				logo.visible = false
 				var control = get_node("../Control")
 				control.visible = true

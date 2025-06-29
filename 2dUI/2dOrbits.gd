@@ -4,6 +4,7 @@ extends Control
 @onready var sun_node: Node3D = space_root.get_node("Sun")  
 @onready var sun_texture: Texture2D = preload("res://2dUI/planet pngs/b4fe772749bfdb184cfac3cad9e030a3.png")
 @onready var planet_nodes: Array[Node3D] = [
+	space_root.get_node("rocket"),
 	space_root.get_node("Mercury_O/Mercury"),
 	space_root.get_node("Venus_O/Venus"),
 	space_root.get_node("Earth_O/Earth"),
@@ -16,6 +17,7 @@ extends Control
 
 
 var planet_textures: Dictionary = {
+	"Rocket": preload("res://2dUI/rocket-start-up-launcher.png"),
 	"Mercury": preload("res://2dUI/planet pngs/42daa67829b564a1659432529f299dd6.png"),
 	"Venus": preload("res://2dUI/planet pngs/bc30731f4f6ce9b58e072855cbf3d9f1.png"),
 	"Earth": preload("res://2dUI/planet pngs/5daf8d18e990798ae9b1b31d393bee9d.png"),
@@ -28,6 +30,7 @@ var planet_textures: Dictionary = {
 
 
 var planet_data := [
+	{"name": "Rocket", "size": 10, "color": Color(0.7, 0.7, 0.7)},
 	{"name": "Mercury", "size": 10, "color": Color(0.7, 0.7, 0.7)},
 	{"name": "Venus", "size": 15, "color": Color(0.9, 0.6, 0.2)},
 	{"name": "Earth", "size": 12, "color": Color(0.2, 0.4, 0.8)},
@@ -82,15 +85,15 @@ func _draw():
 		var tex_position = center - tex_size / 2
 		draw_texture_rect(sun_texture, Rect2(tex_position, tex_size), false)
 	
-	
 	for i in planet_nodes.size():
 		var planet = planet_nodes[i]
 		var data = planet_data[i]
 		var planet_pos_3d = planet.global_position - sun_pos_3d
 		var planet_pos_2d = Vector2(planet_pos_3d.x, planet_pos_3d.z) * view_scale + center
-		var orbit_radius = Vector2(planet_pos_3d.x, planet_pos_3d.z).length() * view_scale
-		draw_arc(center, orbit_radius, 0, 2 * PI, 100, Color(1, 1, 1, 0.2), 1.0)
 		
+		if data["name"] != "Rocket":
+			var orbit_radius = Vector2(planet_pos_3d.x, planet_pos_3d.z).length() * view_scale
+			draw_arc(center, orbit_radius, 0, 2 * PI, 100, Color(1, 1, 1, 0.2), 1.0)
 		
 		var texture = planet_textures.get(data["name"], null)
 		if texture:
@@ -100,15 +103,13 @@ func _draw():
 		else:
 			draw_circle(planet_pos_2d, data["size"] * view_scale, data["color"])
 
-
-
 		if data.get("ring", false):
 			draw_arc(planet_pos_2d + Vector2(data["size"] * view_scale, 0), data["size"] * view_scale * 1.5, 0, 2 * PI, 30, 
 				Color(0.8, 0.8, 0.6, 0.5), 2.0 * view_scale)
+		
 		var font = get_theme_default_font()
 		var font_size = get_theme_default_font_size()
-		draw_string(font, planet_pos_2d , 
-			data["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
+		draw_string(font, planet_pos_2d , data["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
 
 func _input(event):
 	# U key toggle

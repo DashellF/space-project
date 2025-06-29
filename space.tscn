@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=73 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_ie4lf"]
 [ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_ppbui"]
@@ -58,6 +58,9 @@ glow_bloom = 0.2
 glow_blend_mode = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_35bkm"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ppbui"]
+viewport_path = NodePath("rocket/Rocket_tag/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_n7sbm"]
 viewport_path = NodePath("Sun/SU_tag/SubViewport")
@@ -311,6 +314,33 @@ script = ExtResource("9_ie4lf")
 
 [node name="rocket" parent="rocket" index="0"]
 script = null
+
+[node name="Rocket_tag" type="Node3D" parent="rocket"]
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+
+[node name="SubViewport" type="SubViewport" parent="rocket/Rocket_tag"]
+size = Vector2i(300, 25)
+
+[node name="Label" type="Label" parent="rocket/Rocket_tag/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Rocket"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="rocket/Rocket_tag"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ppbui")
 
 [node name="Sun" parent="." instance=ExtResource("10_tsy0t")]
 
