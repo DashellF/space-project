@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=72 format=3 uid="uid://rl24q6d8ab83"]
 
 [ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_ie4lf"]
 [ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_ppbui"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://byhkvxynrg788" path="res://planets/change_time.gd" id="5_rnvo3"]
 [ext_resource type="Script" uid="uid://bnqsndvsudyjg" path="res://button scripts/slowfastbuttons.gd" id="6_4ybkf"]
 [ext_resource type="Script" uid="uid://cjtebbrqlyjol" path="res://planets/start_time_input.gd" id="7_frf6g"]
+[ext_resource type="Script" uid="uid://bncw3mupwo73e" path="res://planet_select_ui.gd" id="8_ppbui"]
 [ext_resource type="Script" uid="uid://b76k1h72caff5" path="res://rocket.gd" id="9_ie4lf"]
 [ext_resource type="PackedScene" uid="uid://suys0h2jo32g" path="res://rocket.tscn" id="9_tjk8i"]
 [ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://planets/sun.tscn" id="10_tsy0t"]
@@ -215,10 +216,11 @@ layout_mode = 2
 text = "MM/DD/YYYY HH:MM"
 script = ExtResource("7_frf6g")
 
-[node name="ScrollContainer" type="VBoxContainer" parent="Control/Big panel/Main Box"]
+[node name="SelectUI" type="VBoxContainer" parent="Control/Big panel/Main Box"]
 layout_mode = 2
+script = ExtResource("8_ppbui")
 
-[node name="StartPlanet" type="OptionButton" parent="Control/Big panel/Main Box/ScrollContainer"]
+[node name="start_dropdown" type="OptionButton" parent="Control/Big panel/Main Box/SelectUI"]
 layout_mode = 2
 item_count = 8
 popup/item_0/text = "Mercury"
@@ -238,7 +240,7 @@ popup/item_6/id = 7
 popup/item_7/text = "Neptune"
 popup/item_7/id = 8
 
-[node name="EndPlanet" type="OptionButton" parent="Control/Big panel/Main Box/ScrollContainer"]
+[node name="end_dropdown" type="OptionButton" parent="Control/Big panel/Main Box/SelectUI"]
 layout_mode = 2
 item_count = 8
 popup/item_0/text = "Mercury"
@@ -257,6 +259,10 @@ popup/item_6/text = "Uranus"
 popup/item_6/id = 7
 popup/item_7/text = "Neptune"
 popup/item_7/id = 8
+
+[node name="launch_button" type="Button" parent="Control/Big panel/Main Box/SelectUI"]
+layout_mode = 2
+text = "Launch!"
 
 [node name="Left panel" type="Panel" parent="Control"]
 layout_mode = 1
@@ -299,9 +305,11 @@ text = "LOGO HERE
 
 Press any key to continue."
 
-[node name="rocket" parent="." instance=ExtResource("9_tjk8i")]
+[node name="rocket" parent="." node_paths=PackedStringArray("planet_nodes", "SelectUI") instance=ExtResource("9_tjk8i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4390.71, 72.8106, -144.805)
 script = ExtResource("9_ie4lf")
+planet_nodes = [NodePath("../Mercury_O/Mercury"), NodePath("../Venus_O/Venus"), NodePath("../Earth_O/Earth"), NodePath("../Mars_O/Mars"), NodePath("../Jupiter_O/Jupiter"), NodePath("../Saturn_O/Saturn"), NodePath("../Uranus_O/Uranus"), NodePath("../Neptune_O/Neptune")]
+SelectUI = NodePath("../Control/Big panel/Main Box/SelectUI")
 
 [node name="rocket" parent="rocket" index="0"]
 script = null
@@ -781,6 +789,8 @@ offset_right = 533.0
 offset_bottom = 305.92
 
 [connection signal="planet_num" from="Camera3D" to="Control/Big panel/Main Box/BoxContainer/Label2" method="_on_camera_3d_planet_num"]
-[connection signal="item_selected" from="Control/Big panel/Main Box/ScrollContainer/StartPlanet" to="Control/Big panel/Main Box/StartTimeInput" method="_on_start_planet_item_selected"]
+[connection signal="item_selected" from="Control/Big panel/Main Box/SelectUI/start_dropdown" to="Control/Big panel/Main Box/StartTimeInput" method="_on_start_planet_item_selected"]
+[connection signal="item_selected" from="Control/Big panel/Main Box/SelectUI/end_dropdown" to="Control/Big panel/Main Box/SelectUI" method="_on_end_dropdown_item_selected"]
+[connection signal="pressed" from="Control/Big panel/Main Box/SelectUI/launch_button" to="Control/Big panel/Main Box/SelectUI" method="_on_launch_button_pressed"]
 
 [editable path="rocket"]

@@ -201,8 +201,3 @@ func raw_index_to_caret_pos(raw_index: int) -> int:
 	if raw_index >= MASK.size():
 		return text.length()
 	return MASK[raw_index]
-
-
-func _on_start_planet_item_selected(index: int) -> void:
-	var selected_text = $OptionButton.get_item_text(index)
-	print("Selected: ", selected_text)
