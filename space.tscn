@@ -1,50 +1,51 @@
-[gd_scene load_steps=70 format=3 uid="uid://rl24q6d8ab83"]
+[gd_scene load_steps=71 format=3 uid="uid://rl24q6d8ab83"]
 
-[ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_1ihek"]
-[ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_cafxb"]
-[ext_resource type="Script" uid="uid://hldmo63xy0fh" path="res://ui_planet_button.gd" id="3_jhjvm"]
-[ext_resource type="Script" uid="uid://big3kbbl8xv06" path="res://timer_script.gd" id="4_ibxys"]
-[ext_resource type="Script" uid="uid://byhkvxynrg788" path="res://planets/change_time.gd" id="5_67dfk"]
-[ext_resource type="Script" uid="uid://bnqsndvsudyjg" path="res://button scripts/slowfastbuttons.gd" id="5_kgxdp"]
-[ext_resource type="Script" uid="uid://cjtebbrqlyjol" path="res://planets/start_time_input.gd" id="7_cjff7"]
-[ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://planets/sun.tscn" id="7_wftqc"]
-[ext_resource type="Script" uid="uid://cb5ulyd6w8ius" path="res://planets/end_time_input.gd" id="8_xhwas"]
-[ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://orbits/earth_orbit.gd" id="8_yhx7r"]
-[ext_resource type="PackedScene" uid="uid://tu7m01jtcekk" path="res://planets/earth.tscn" id="9_iodg4"]
-[ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://orbits/earth_moonO.gd" id="10_3rbkj"]
-[ext_resource type="PackedScene" uid="uid://cwy75yc77u8n4" path="res://planets/earth_moon.tscn" id="11_8avvp"]
-[ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://orbits/venus_orbit.gd" id="12_5m0ew"]
-[ext_resource type="Script" uid="uid://ejuvhnit37h2" path="res://planets/ea_orb_line.gd" id="12_8avvp"]
-[ext_resource type="Script" uid="uid://48lrvbqh14pm" path="res://planets/eam_orb_line.gd" id="12_cjff7"]
-[ext_resource type="PackedScene" uid="uid://cit721c0gtcea" path="res://planets/venus.tscn" id="13_cjff7"]
-[ext_resource type="Script" uid="uid://berodv21tqgot" path="res://orbits/mercury_orbit.gd" id="14_xhwas"]
-[ext_resource type="Script" uid="uid://bph11a4xtskfm" path="res://planets/ve_orb_line.gd" id="15_5m0ew"]
-[ext_resource type="PackedScene" uid="uid://ijf1kly4ex0r" path="res://planets/mercury.tscn" id="15_67dfk"]
-[ext_resource type="Script" uid="uid://cfvxgoi35mc2p" path="res://planets/me_orb_line.gd" id="16_iodg4"]
-[ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://orbits/mars_orbit.gd" id="16_vomel"]
-[ext_resource type="PackedScene" uid="uid://gq1jii67eufs" path="res://planets/mars.tscn" id="17_p1omw"]
-[ext_resource type="Script" uid="uid://g4ralivnvkkm" path="res://mars.gd" id="18_g7h33"]
-[ext_resource type="PackedScene" uid="uid://7cu4rq6ekttr" path="res://planets/phobos.tscn" id="19_y1g2g"]
-[ext_resource type="PackedScene" uid="uid://dh80prevuwpmd" path="res://planets/deimos.tscn" id="20_17l4g"]
-[ext_resource type="Script" uid="uid://d0fws8f4tc68h" path="res://planets/ma_orb_line.gd" id="21_168cx"]
-[ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://orbits/jupiter_orbit.gd" id="21_hcqao"]
-[ext_resource type="Script" uid="uid://734s3tj0gel8" path="res://planets/ph_orb_line.gd" id="21_wftqc"]
-[ext_resource type="PackedScene" uid="uid://b2vcl2p14ny47" path="res://planets/jupiter.tscn" id="22_mw0qc"]
-[ext_resource type="Script" uid="uid://xeoexe7t75sd" path="res://planets/de_orb_line.gd" id="22_yhx7r"]
-[ext_resource type="Script" uid="uid://dqdyp225wxd8y" path="res://planets/ju_orb_line.gd" id="23_kgxdp"]
-[ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://orbits/saturn_orbit.gd" id="23_ykhyk"]
-[ext_resource type="PackedScene" uid="uid://dsbhfk6f8o7qb" path="res://planets/saturnFINAL.tscn" id="24_drbii"]
-[ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://orbits/uranus_orbit.gd" id="25_02biu"]
-[ext_resource type="Script" uid="uid://0xop0kea6fch" path="res://planets/sa_orb_line.gd" id="25_ibxys"]
-[ext_resource type="PackedScene" uid="uid://bmbewo8nx4lmc" path="res://planets/uranus.tscn" id="26_uivhv"]
-[ext_resource type="Script" uid="uid://cosn8jqe1awkn" path="res://planets/ur_orb_line.gd" id="27_jhjvm"]
-[ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://orbits/neptune_orbit.gd" id="27_lqow6"]
-[ext_resource type="PackedScene" uid="uid://nnexwfyo3n53" path="res://planets/neptune.tscn" id="28_weik8"]
-[ext_resource type="Script" uid="uid://c6btgjvckvcu2" path="res://planets/ne_orb_line.gd" id="29_cafxb"]
-[ext_resource type="Script" uid="uid://dbwsrjbb15ie5" path="res://2dUI/2dOrbits.gd" id="43_qvv86"]
+[ext_resource type="Texture2D" uid="uid://ckbp104lqvxcw" path="res://assets/8k_stars_milky_way.jpg" id="1_ie4lf"]
+[ext_resource type="Script" uid="uid://cdg76nlqjlxo8" path="res://camera_3d.gd" id="2_ppbui"]
+[ext_resource type="Script" uid="uid://hldmo63xy0fh" path="res://ui_planet_button.gd" id="3_g0xm3"]
+[ext_resource type="Script" uid="uid://big3kbbl8xv06" path="res://timer_script.gd" id="4_0jo7s"]
+[ext_resource type="Script" uid="uid://byhkvxynrg788" path="res://planets/change_time.gd" id="5_rnvo3"]
+[ext_resource type="Script" uid="uid://bnqsndvsudyjg" path="res://button scripts/slowfastbuttons.gd" id="6_4ybkf"]
+[ext_resource type="Script" uid="uid://cjtebbrqlyjol" path="res://planets/start_time_input.gd" id="7_frf6g"]
+[ext_resource type="Script" uid="uid://b76k1h72caff5" path="res://rocket.gd" id="9_ie4lf"]
+[ext_resource type="PackedScene" uid="uid://suys0h2jo32g" path="res://rocket.tscn" id="9_tjk8i"]
+[ext_resource type="PackedScene" uid="uid://tspk0tagw5dm" path="res://planets/sun.tscn" id="10_tsy0t"]
+[ext_resource type="Script" uid="uid://dat5y246a2s7d" path="res://orbits/earth_orbit.gd" id="11_ehrqf"]
+[ext_resource type="PackedScene" uid="uid://tu7m01jtcekk" path="res://planets/earth.tscn" id="12_g4l8c"]
+[ext_resource type="Script" uid="uid://dhbxd1qdgyfao" path="res://orbits/earth_moonO.gd" id="13_p3s12"]
+[ext_resource type="PackedScene" uid="uid://cwy75yc77u8n4" path="res://planets/earth_moon.tscn" id="14_6k3rd"]
+[ext_resource type="Script" uid="uid://48lrvbqh14pm" path="res://planets/eam_orb_line.gd" id="15_k15ue"]
+[ext_resource type="Script" uid="uid://ejuvhnit37h2" path="res://planets/ea_orb_line.gd" id="16_c6er2"]
+[ext_resource type="Script" uid="uid://dfs3h4rb84n3l" path="res://orbits/venus_orbit.gd" id="17_h3drp"]
+[ext_resource type="PackedScene" uid="uid://cit721c0gtcea" path="res://planets/venus.tscn" id="18_gtlm0"]
+[ext_resource type="Script" uid="uid://bph11a4xtskfm" path="res://planets/ve_orb_line.gd" id="19_0x6ju"]
+[ext_resource type="Script" uid="uid://berodv21tqgot" path="res://orbits/mercury_orbit.gd" id="20_88tmo"]
+[ext_resource type="PackedScene" uid="uid://ijf1kly4ex0r" path="res://planets/mercury.tscn" id="21_ghrox"]
+[ext_resource type="Script" uid="uid://cfvxgoi35mc2p" path="res://planets/me_orb_line.gd" id="22_va878"]
+[ext_resource type="Script" uid="uid://c46j3gtixkmrx" path="res://orbits/mars_orbit.gd" id="23_8f58m"]
+[ext_resource type="PackedScene" uid="uid://gq1jii67eufs" path="res://planets/mars.tscn" id="24_npomi"]
+[ext_resource type="Script" uid="uid://g4ralivnvkkm" path="res://mars.gd" id="25_8c84q"]
+[ext_resource type="PackedScene" uid="uid://7cu4rq6ekttr" path="res://planets/phobos.tscn" id="26_sexlh"]
+[ext_resource type="PackedScene" uid="uid://dh80prevuwpmd" path="res://planets/deimos.tscn" id="27_dy3wd"]
+[ext_resource type="Script" uid="uid://734s3tj0gel8" path="res://planets/ph_orb_line.gd" id="28_8uuqu"]
+[ext_resource type="Script" uid="uid://xeoexe7t75sd" path="res://planets/de_orb_line.gd" id="29_5v7wb"]
+[ext_resource type="Script" uid="uid://d0fws8f4tc68h" path="res://planets/ma_orb_line.gd" id="30_ck04g"]
+[ext_resource type="Script" uid="uid://caodo7btx5guw" path="res://orbits/jupiter_orbit.gd" id="31_uynf2"]
+[ext_resource type="PackedScene" uid="uid://b2vcl2p14ny47" path="res://planets/jupiter.tscn" id="32_83dl1"]
+[ext_resource type="Script" uid="uid://dqdyp225wxd8y" path="res://planets/ju_orb_line.gd" id="33_rxruj"]
+[ext_resource type="Script" uid="uid://bngvq0plhny5d" path="res://orbits/saturn_orbit.gd" id="34_bqesx"]
+[ext_resource type="PackedScene" uid="uid://dsbhfk6f8o7qb" path="res://planets/saturnFINAL.tscn" id="35_u2761"]
+[ext_resource type="Script" uid="uid://0xop0kea6fch" path="res://planets/sa_orb_line.gd" id="36_pqvc0"]
+[ext_resource type="Script" uid="uid://dfs60ngknn2he" path="res://orbits/uranus_orbit.gd" id="37_pqesa"]
+[ext_resource type="PackedScene" uid="uid://bmbewo8nx4lmc" path="res://planets/uranus.tscn" id="38_ahlvl"]
+[ext_resource type="Script" uid="uid://cosn8jqe1awkn" path="res://planets/ur_orb_line.gd" id="39_tnjsd"]
+[ext_resource type="Script" uid="uid://cmeiddr5xlw3a" path="res://orbits/neptune_orbit.gd" id="40_5b0qj"]
+[ext_resource type="PackedScene" uid="uid://nnexwfyo3n53" path="res://planets/neptune.tscn" id="41_plgnu"]
+[ext_resource type="Script" uid="uid://c6btgjvckvcu2" path="res://planets/ne_orb_line.gd" id="42_httst"]
+[ext_resource type="Script" uid="uid://dbwsrjbb15ie5" path="res://2dUI/2dOrbits.gd" id="43_vd5ta"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_81phd"]
-panorama = ExtResource("1_1ihek")
+panorama = ExtResource("1_ie4lf")
 
 [sub_resource type="Sky" id="Sky_qtpbo"]
 sky_material = SubResource("PanoramaSkyMaterial_81phd")
@@ -133,7 +134,7 @@ environment = SubResource("Environment_rxlph")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5000, 5000, 4000)
 current = true
 far = 100000.0
-script = ExtResource("2_cafxb")
+script = ExtResource("2_ppbui")
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -174,7 +175,7 @@ text = " Current Planet:"
 
 [node name="Label2" type="Label" parent="Control/Big panel/Main Box/BoxContainer"]
 layout_mode = 2
-script = ExtResource("3_jhjvm")
+script = ExtResource("3_g0xm3")
 
 [node name="Time" type="BoxContainer" parent="Control/Big panel/Main Box"]
 layout_mode = 2
@@ -188,15 +189,15 @@ label_settings = SubResource("LabelSettings_35bkm")
 layout_mode = 2
 text = "1/1/2025 00:00"
 label_settings = SubResource("LabelSettings_35bkm")
-script = ExtResource("4_ibxys")
+script = ExtResource("4_0jo7s")
 
 [node name="ChangeTime" type="LineEdit" parent="Control/Big panel/Main Box"]
 layout_mode = 2
-script = ExtResource("5_67dfk")
+script = ExtResource("5_rnvo3")
 
 [node name="Time Controls" type="HBoxContainer" parent="Control/Big panel/Main Box"]
 layout_mode = 2
-script = ExtResource("5_kgxdp")
+script = ExtResource("6_4ybkf")
 
 [node name="SlowerButton" type="Button" parent="Control/Big panel/Main Box/Time Controls"]
 layout_mode = 2
@@ -212,12 +213,7 @@ text = "Faster"
 [node name="StartTimeInput" type="LineEdit" parent="Control/Big panel/Main Box"]
 layout_mode = 2
 text = "MM/DD/YYYY HH:MM"
-script = ExtResource("7_cjff7")
-
-[node name="EndTimeInput" type="LineEdit" parent="Control/Big panel/Main Box"]
-layout_mode = 2
-text = "MM/DD/YYYY HH:MM"
-script = ExtResource("8_xhwas")
+script = ExtResource("7_frf6g")
 
 [node name="ScrollContainer" type="VBoxContainer" parent="Control/Big panel/Main Box"]
 layout_mode = 2
@@ -303,7 +299,14 @@ text = "LOGO HERE
 
 Press any key to continue."
 
-[node name="Sun" parent="." instance=ExtResource("7_wftqc")]
+[node name="rocket" parent="." instance=ExtResource("9_tjk8i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4390.71, 72.8106, -144.805)
+script = ExtResource("9_ie4lf")
+
+[node name="rocket" parent="rocket" index="0"]
+script = null
+
+[node name="Sun" parent="." instance=ExtResource("10_tsy0t")]
 
 [node name="SU_tag" type="Node3D" parent="Sun"]
 transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
@@ -333,11 +336,11 @@ billboard = 1
 texture = SubResource("ViewportTexture_n7sbm")
 
 [node name="Earth_O" type="Node3D" parent="."]
-script = ExtResource("8_yhx7r")
+script = ExtResource("11_ehrqf")
 
-[node name="Earth" parent="Earth_O" instance=ExtResource("9_iodg4")]
+[node name="Earth" parent="Earth_O" instance=ExtResource("12_g4l8c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94471, 0, 0)
-script = ExtResource("10_3rbkj")
+script = ExtResource("13_p3s12")
 
 [node name="EA_tag" type="Node3D" parent="Earth_O/Earth"]
 transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
@@ -366,7 +369,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_c8jnm")
 
-[node name="Earth Moon" parent="Earth_O/Earth" instance=ExtResource("11_8avvp")]
+[node name="Earth Moon" parent="Earth_O/Earth" instance=ExtResource("14_6k3rd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 238.855, 0, 0)
 
 [node name="EAM_tag" type="Node3D" parent="Earth_O/Earth/Earth Moon"]
@@ -398,17 +401,17 @@ texture = SubResource("ViewportTexture_gvyvm")
 
 [node name="EAMOrbLine" type="MeshInstance3D" parent="Earth_O/Earth"]
 mesh = SubResource("ImmediateMesh_67dfk")
-script = ExtResource("12_cjff7")
+script = ExtResource("15_k15ue")
 
 [node name="EAOrbLine" type="MeshInstance3D" parent="Earth_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_cjff7")
-script = ExtResource("12_8avvp")
+script = ExtResource("16_c6er2")
 
 [node name="Venus_O" type="Node3D" parent="."]
-script = ExtResource("12_5m0ew")
+script = ExtResource("17_h3drp")
 
-[node name="Venus" parent="Venus_O" instance=ExtResource("13_cjff7")]
+[node name="Venus" parent="Venus_O" instance=ExtResource("18_gtlm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67676, 0, 0)
 
 [node name="VE_tag" type="Node3D" parent="Venus_O/Venus"]
@@ -441,13 +444,13 @@ texture = SubResource("ViewportTexture_4fo3t")
 [node name="VEOrbLine" type="MeshInstance3D" parent="Venus_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_xhwas")
-script = ExtResource("15_5m0ew")
+script = ExtResource("19_0x6ju")
 
 [node name="Mercury_O" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0038476, 0, 0)
-script = ExtResource("14_xhwas")
+script = ExtResource("20_88tmo")
 
-[node name="Mercury" parent="Mercury_O" instance=ExtResource("15_67dfk")]
+[node name="Mercury" parent="Mercury_O" instance=ExtResource("21_ghrox")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37231, 0, 0)
 
 [node name="ME_tag" type="Node3D" parent="Mercury_O/Mercury"]
@@ -480,14 +483,14 @@ texture = SubResource("ViewportTexture_4v84m")
 [node name="MEOrbLine" type="MeshInstance3D" parent="Mercury_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_3rbkj")
-script = ExtResource("16_iodg4")
+script = ExtResource("22_va878")
 
 [node name="Mars_O" type="Node3D" parent="."]
-script = ExtResource("16_vomel")
+script = ExtResource("23_8f58m")
 
-[node name="Mars" parent="Mars_O" instance=ExtResource("17_p1omw")]
+[node name="Mars" parent="Mars_O" instance=ExtResource("24_npomi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 141600, 0, 0)
-script = ExtResource("18_g7h33")
+script = ExtResource("25_8c84q")
 
 [node name="MA_tag" type="Node3D" parent="Mars_O/Mars"]
 transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0, 5.118, 0)
@@ -516,7 +519,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_jhjvm")
 
-[node name="phobos" parent="Mars_O/Mars" instance=ExtResource("19_y1g2g")]
+[node name="phobos" parent="Mars_O/Mars" instance=ExtResource("26_sexlh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.826, 0, 0)
 
 [node name="PH_tag" type="Node3D" parent="Mars_O/Mars/phobos"]
@@ -546,7 +549,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_1ihek")
 
-[node name="deimos" parent="Mars_O/Mars" instance=ExtResource("20_17l4g")]
+[node name="deimos" parent="Mars_O/Mars" instance=ExtResource("27_dy3wd")]
 transform = Transform3D(1, 0, 0, 0, 0.967709, -0.252069, 0, 0.252069, 0.967709, 14.58, 0, 0)
 
 [node name="DE_tag" type="Node3D" parent="Mars_O/Mars/deimos"]
@@ -578,21 +581,21 @@ texture = SubResource("ViewportTexture_cafxb")
 
 [node name="PHOrbLine" type="MeshInstance3D" parent="Mars_O/Mars"]
 mesh = SubResource("ImmediateMesh_yhx7r")
-script = ExtResource("21_wftqc")
+script = ExtResource("28_8uuqu")
 
 [node name="DEOrbLine" type="MeshInstance3D" parent="Mars_O/Mars"]
 mesh = SubResource("ImmediateMesh_iodg4")
-script = ExtResource("22_yhx7r")
+script = ExtResource("29_5v7wb")
 
 [node name="MAOrbLine" type="MeshInstance3D" parent="Mars_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_wftqc")
-script = ExtResource("21_168cx")
+script = ExtResource("30_ck04g")
 
 [node name="Jupiter_O" type="Node3D" parent="."]
-script = ExtResource("21_hcqao")
+script = ExtResource("31_uynf2")
 
-[node name="Jupiter" parent="Jupiter_O" instance=ExtResource("22_mw0qc")]
+[node name="Jupiter" parent="Jupiter_O" instance=ExtResource("32_83dl1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 477760, 0, 0)
 
 [node name="JU_tag" type="Node3D" parent="Jupiter_O/Jupiter"]
@@ -625,12 +628,12 @@ texture = SubResource("ViewportTexture_55yc6")
 [node name="JUOrbLine" type="MeshInstance3D" parent="Jupiter_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_168cx")
-script = ExtResource("23_kgxdp")
+script = ExtResource("33_rxruj")
 
 [node name="Saturn_O" type="Node3D" parent="."]
-script = ExtResource("23_ykhyk")
+script = ExtResource("34_bqesx")
 
-[node name="Saturn" parent="Saturn_O" instance=ExtResource("24_drbii")]
+[node name="Saturn" parent="Saturn_O" instance=ExtResource("35_u2761")]
 transform = Transform3D(0.085, 0, 0, 0, 0.085, 0, 0, 0, 0.085, 889910, 0, 0)
 
 [node name="SA_tag" type="Node3D" parent="Saturn_O/Saturn"]
@@ -663,12 +666,12 @@ texture = SubResource("ViewportTexture_20dnj")
 [node name="SAOrbLine" type="MeshInstance3D" parent="Saturn_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_kgxdp")
-script = ExtResource("25_ibxys")
+script = ExtResource("36_pqvc0")
 
 [node name="Uranus_O" type="Node3D" parent="."]
-script = ExtResource("25_02biu")
+script = ExtResource("37_pqesa")
 
-[node name="Uranus" parent="Uranus_O" instance=ExtResource("26_uivhv")]
+[node name="Uranus" parent="Uranus_O" instance=ExtResource("38_ahlvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8141e+06, 0, 0)
 
 [node name="UR_tag" type="Node3D" parent="Uranus_O/Uranus"]
@@ -701,12 +704,12 @@ texture = SubResource("ViewportTexture_35bkm")
 [node name="UROrbLine" type="MeshInstance3D" parent="Uranus_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_ibxys")
-script = ExtResource("27_jhjvm")
+script = ExtResource("39_tnjsd")
 
 [node name="Neptune_O" type="Node3D" parent="."]
-script = ExtResource("27_lqow6")
+script = ExtResource("40_5b0qj")
 
-[node name="Neptune" parent="Neptune_O" instance=ExtResource("28_weik8")]
+[node name="Neptune" parent="Neptune_O" instance=ExtResource("41_plgnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7781e+06, 0, 0)
 
 [node name="NE_tag" type="Node3D" parent="Neptune_O/Neptune"]
@@ -739,7 +742,7 @@ texture = SubResource("ViewportTexture_4xipw")
 [node name="NEOrbLine" type="MeshInstance3D" parent="Neptune_O"]
 visible = false
 mesh = SubResource("ImmediateMesh_jhjvm")
-script = ExtResource("29_cafxb")
+script = ExtResource("42_httst")
 
 [node name="SolarSystemUI (not done)" type="Control" parent="."]
 layout_mode = 3
@@ -763,7 +766,7 @@ offset_left = -575.48
 offset_top = -318.0
 offset_right = 575.52
 offset_bottom = 318.0
-script = ExtResource("43_qvv86")
+script = ExtResource("43_vd5ta")
 
 [node name="TitleLabel" type="Label" parent="SolarSystemUI (not done)/SolarSystemContainer"]
 layout_mode = 1
@@ -779,3 +782,5 @@ offset_bottom = 305.92
 
 [connection signal="planet_num" from="Camera3D" to="Control/Big panel/Main Box/BoxContainer/Label2" method="_on_camera_3d_planet_num"]
 [connection signal="item_selected" from="Control/Big panel/Main Box/ScrollContainer/StartPlanet" to="Control/Big panel/Main Box/StartTimeInput" method="_on_start_planet_item_selected"]
+
+[editable path="rocket"]

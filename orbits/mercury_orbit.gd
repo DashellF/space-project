@@ -6,8 +6,8 @@ extends Node3D
 var angle := deg_to_rad(202.6582)
 var mesh: Node3D
 
-var xcoord := 0.0
-var zcoord := 0.0
+var x := orbit_radius
+var z := 0.0
 
 func _ready():
 	if not global.is_connected("hours_updated", Callable(self, "_on_hours_updated")):
@@ -23,14 +23,18 @@ func _on_hours_updated(new_value: float):
 	
 func _on_timespeed_updated(new_value: float):
 	orbit_speed = -0.002966 * global.timeSpeed
-
+func _get_position_in_time(hours):
+	var newAngle = deg_to_rad(202.6582) + orbit_speed * hours
+	var x = orbit_radius * cos(angle)
+	var z = orbit_radius * sin(angle)
+	return [x, z]
 func _process(delta):
 	angle += orbit_speed * delta
 	_update_orbit_position()
 
 func _update_orbit_position():
-	var x = orbit_radius * cos(angle) + xcoord
-	var z = orbit_radius * sin(angle) + zcoord
+	x = orbit_radius * cos(angle)
+	z = orbit_radius * sin(angle)
 	mesh.transform.origin = Vector3(x, 0, z)
 	
 	

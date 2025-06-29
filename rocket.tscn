@@ -7,5 +7,6 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="rocket" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0687189, -0.0248806, -0.0220528)
 mesh = SubResource("CapsuleMesh_5gt1y")
 script = ExtResource("1_fj03e")

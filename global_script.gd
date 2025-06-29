@@ -81,7 +81,7 @@ func update_datetime():
 
 func _ready():
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-	Engine.max_fps = 5000
+	Engine.max_fps = 600
 	set_process(true)
 	update_days_in_february()
 	

@@ -4,6 +4,7 @@ var freecamera := false
 var time := false
 var moon := false
 var titleScreen := true
+var rocket := false
 
 signal time_scale_updated(new_scale)
 var min_time_scale := 0.1
@@ -42,6 +43,7 @@ var offsets := [
 var planets := []
 var orbit_lines := []
 var logo
+var rockets
 var i := 0
 var earth_moon := []
 var earth_moon_offset := []
@@ -71,6 +73,7 @@ func _ready():
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	logo = get_node("../TITLE")
+	rockets = get_node("../rocket")
 	orbit_lines = [
 	get_node("../Sun"),  # Assuming Sun has no orbital line
 	get_node("../Mercury_O/MEOrbLine"),
@@ -93,7 +96,7 @@ func _ready():
 		get_node("../Uranus_O/Uranus"),
 		get_node("../Neptune_O/Neptune")
 	]
-	"../Mars_O/MAOrbLine"
+	
 	for o in offsets:
 		orbit_distances.append(o.length())
 
@@ -263,14 +266,20 @@ func _process(delta):
 			else:
 				target = planets[i]
 				_set_orbit_target(target)
-
+				
 		if Input.is_action_just_pressed("g_key") || Input.is_action_just_pressed("u_key"):
 			mouse = !mouse
 			if mouse:
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			else:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-				
+		
+		if Input.is_action_just_pressed("r_key"):
+			rocket = !rocket
+			if rocket:
+				target = rockets
+			else:
+				target = planets[i]
 				
 func _input(event):
 	if titleScreen:
