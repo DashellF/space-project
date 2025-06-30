@@ -8,7 +8,7 @@ var rocket := false
 
 signal time_scale_updated(new_scale)
 var min_time_scale := 0.1
-var max_time_scale := 10.0
+var max_time_scale := 100000
 var time_scale_step := 0.1
 
 var earth_luna_view = false
@@ -124,6 +124,7 @@ func _on_timespeed_updated(new_value: float):
 	follow_speed = 5 * new_value
 
 func _process(delta):
+	print("x:", self.global_transform.origin.x, " z:", self.global_transform.origin.z)
 	if !titleScreen:
 		if Input.is_action_just_pressed("e_key"):
 			get_tree().quit()

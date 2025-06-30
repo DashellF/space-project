@@ -76,6 +76,7 @@ func get_hours_from_format() -> float:
 	return total_hours
 
 func update_datetime():
+
 	HOURSFROMBASETIME = get_hours_from_format()
 	emit_signal("hours_updated", HOURSFROMBASETIME)
 
@@ -87,7 +88,7 @@ func _ready():
 	
 func _speed_change_time(multiplier):
 	timeSpeed += multiplier
-	timeSpeed = clamp(timeSpeed, 0.1, 100.0)
+	timeSpeed = clamp(timeSpeed, 0.1, 10000.0)
 	emit_signal("timespeed_updated", timeSpeed)
 	
 

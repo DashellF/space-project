@@ -207,7 +207,7 @@ script = ExtResource("6_4ybkf")
 layout_mode = 2
 text = "Slower"
 
-[node name="SpeedLabel" type="Label" parent="Control/Big panel/Main Box/Time Controls"]
+[node name="SpeedLabel" type="LineEdit" parent="Control/Big panel/Main Box/Time Controls"]
 layout_mode = 2
 
 [node name="FasterButton" type="Button" parent="Control/Big panel/Main Box/Time Controls"]
