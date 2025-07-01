@@ -35,7 +35,7 @@ var offsets := [
 	Vector3(-10, 5, 10),
 	Vector3(-5, 2.5, 5),
 	Vector3(-80, 40, 80),
-	Vector3(-80, 40, 80),
+	Vector3(-120, 40, 120),
 	Vector3(-40, 20, 40),
 	Vector3(-40, 20, 40),
 ]

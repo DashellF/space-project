@@ -1,5 +1,5 @@
 extends Control
-# so far, so good. UI matches up. However, the 2d planet circles are not drawing...
+
 @onready var space_root: Node3D = get_node("/root/Space") 
 @onready var sun_node: Node3D = space_root.get_node("Sun")  
 @onready var sun_texture: Texture2D = preload("res://2dUI/planet pngs/b4fe772749bfdb184cfac3cad9e030a3.png")
@@ -15,6 +15,13 @@ extends Control
 	space_root.get_node("Neptune_O/Neptune")
 ]
 
+var predicted_ellipse := {
+	"a": 0.0,
+	"e": 0.0,
+	"offset_theta": 0.0,
+	"theta_range": 0.0,
+	"active": false
+}
 
 var planet_textures: Dictionary = {
 	"Rocket": preload("res://2dUI/rocket-start-up-launcher.png"),
@@ -28,7 +35,6 @@ var planet_textures: Dictionary = {
 	"Neptune": preload("res://2dUI/planet pngs/ea0e780cf59d9383b20cf02ddb15d328.png")
 }
 
-
 var planet_data := [
 	{"name": "Rocket", "size": 10, "color": Color(0.7, 0.7, 0.7)},
 	{"name": "Mercury", "size": 10, "color": Color(0.7, 0.7, 0.7)},
@@ -41,34 +47,78 @@ var planet_data := [
 	{"name": "Neptune", "size": 600, "color": Color(0.2, 0.4, 0.9)}
 ]
 
-
 var ui_visible := false
 var view_scale := 0.001
 var min_scale := 0.0001
 var max_scale := 200
 var center_offset := Vector2.ZERO
 var dragging := false
-var edge_margin := 50.0 # pixels
+var edge_margin := 50.0
 var last_drag_pos := Vector2.ZERO
 
 func _ready():
-	hide() # Start hidden
-	#_calculate_initial_scale()
+	var rocket = space_root.get_node("rocket")
+	if rocket:
+		rocket.connect("ellipse_parameters", Callable(self, "_on_ellipse_parameters"))
+	global.connect("hours_updated", Callable(self, "update_positions_from_time"))
+	hide()
 
-#func _calculate_initial_scale():
-	#var max_distance := 0.0
-	#var sun_pos_3d = sun_node.global_position
-	#
-	#for planet in planet_nodes:
-		#var planet_pos_3d = planet.global_position - sun_pos_3d
-		#var distance = Vector2(planet_pos_3d.x, planet_pos_3d.z).length()
-		#if distance > max_distance:
-			#max_distance = distance
-	#
-	# scale to fit with margins
-	#if max_distance > 0:
-		#var min_dimension = min(size.x, size.y)
-		#view_scale = (min_dimension - edge_margin * 2) / (max_distance * 2)
+func _on_ellipse_parameters(a: float, e: float, offset_theta: float, theta_range: float):
+	predicted_ellipse = {
+		"a": a,
+		"e": e,
+		"offset_theta": offset_theta,
+		"theta_range": theta_range,
+		"active": true
+	}
+	queue_redraw()
+
+func draw_predicted_ellipse(center: Vector2):
+	if !predicted_ellipse.active:
+		return  
+	var points = []
+	var steps = 200
+	var a = predicted_ellipse.a * view_scale
+	var e = predicted_ellipse.e
+	var offset_theta = predicted_ellipse.offset_theta
+	var theta_range = predicted_ellipse.theta_range
+
+	for i in range(steps + 1):
+		var theta = theta_range * (i / float(steps))
+		var r = a * (1 - e * e) / (1 + e * cos(theta))
+		var x = r * cos(theta + offset_theta)
+		var y = r * sin(theta + offset_theta)
+		points.append(center + Vector2(x, y))
+	
+	for i in range(points.size() - 1):
+		draw_line(points[i], points[i+1], Color(1, 1, 0, 0.5), 10.0)
+
+func update_positions_from_time(hours: float):
+	if !ui_visible:
+		return
+	
+	var center = size / 2 + center_offset
+	var sun_pos_3d = sun_node.global_position
+	var rocket = space_root.get_node("rocket")
+	
+	if rocket:
+		var params = rocket.get_current_orbit_params()
+		if params["traveling"]:
+			var t_frac = params["elapsed_time"] / params["total_time"]
+			var theta = params["theta_range"] * t_frac
+			var r = params["a"] * (1 - params["e"] * params["e"]) / (1 + params["e"] * cos(theta))
+			predicted_ellipse = {
+				"a": params["a"],
+				"e": params["e"],
+				"offset_theta": params["offset_theta"],
+				"theta_range": params["theta_range"] / 2,
+				"active": true
+			}
+		else:
+			predicted_ellipse["active"] = false
+	
+	queue_redraw()
+
 func _process(_delta):
 	if ui_visible:
 		queue_redraw()
@@ -79,8 +129,11 @@ func _draw():
 	
 	var center = size / 2 + center_offset
 	var sun_pos_3d = sun_node.global_position
+	
+	draw_predicted_ellipse(center)
+	
 	if sun_texture:
-		var sun_scale := 30.0  # or whatever size boost you want
+		var sun_scale := 30.0
 		var tex_size = sun_texture.get_size() * view_scale * sun_scale
 		var tex_position = center - tex_size / 2
 		draw_texture_rect(sun_texture, Rect2(tex_position, tex_size), false)
@@ -104,27 +157,24 @@ func _draw():
 			draw_circle(planet_pos_2d, data["size"] * view_scale, data["color"])
 
 		if data.get("ring", false):
-			draw_arc(planet_pos_2d + Vector2(data["size"] * view_scale, 0), data["size"] * view_scale * 1.5, 0, 2 * PI, 30, 
+			draw_arc(planet_pos_2d + Vector2(data["size"] * view_scale, 0), 
+				data["size"] * view_scale * 1.5, 0, 2 * PI, 30, 
 				Color(0.8, 0.8, 0.6, 0.5), 2.0 * view_scale)
 		
-		var font = get_theme_default_font()
-		var font_size = get_theme_default_font_size()
-		draw_string(font, planet_pos_2d , data["name"], HORIZONTAL_ALIGNMENT_LEFT, -1, font_size)
+		draw_string(get_theme_default_font(), planet_pos_2d, data["name"], 
+			HORIZONTAL_ALIGNMENT_LEFT, -1, get_theme_default_font_size())
 
 func _input(event):
-	# U key toggle
 	if event.is_action_pressed("ui_toggle_solar_map"):
 		ui_visible = !ui_visible
 		show() if ui_visible else hide()
 	
-	# zooming
 	if ui_visible:
 		if Input.is_action_just_pressed("k_key"):
 			view_scale = clamp(view_scale * 1.1, min_scale, max_scale)
 		elif Input.is_action_just_pressed("l_key"):
 			view_scale = clamp(view_scale * 0.9, min_scale, max_scale)
 		
-		# panning/dragging
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				dragging = event.pressed

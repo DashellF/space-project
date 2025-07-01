@@ -1,12 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://suys0h2jo32g"]
 
+[ext_resource type="PackedScene" uid="uid://dmj7hwuta38pd" path="res://assets/toy_rocket_4k_free_3d_model.glb" id="1_5gt1y"]
 [ext_resource type="Script" uid="uid://b76k1h72caff5" path="res://rocket.gd" id="1_fj03e"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_5gt1y"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="rocket" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0687189, -0.0248806, -0.0220528)
-mesh = SubResource("CapsuleMesh_5gt1y")
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_5gt1y")]
 script = ExtResource("1_fj03e")

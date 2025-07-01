@@ -215,6 +215,7 @@ layout_mode = 2
 text = "Faster"
 
 [node name="StartTimeInput" type="LineEdit" parent="Control/Big panel/Main Box"]
+visible = false
 layout_mode = 2
 text = "MM/DD/YYYY HH:MM"
 script = ExtResource("7_frf6g")
@@ -272,8 +273,9 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -200.0
+offset_top = -248.0
 offset_right = 300.0
+offset_bottom = 52.0
 grow_vertical = 0
 tooltip_text = "This is the area that has controls!
 "
@@ -284,7 +286,7 @@ anchors_preset = -1
 anchor_right = 0.41
 anchor_bottom = 0.268
 offset_right = 318.0
-offset_bottom = 119.6
+offset_bottom = 446.4
 
 [node name="BoxContainer" type="BoxContainer" parent="Control/Left panel/Main Box"]
 layout_mode = 2
@@ -296,9 +298,11 @@ w/up: move farther from sun
 s/down: move closer to sun
 a/d: toggle moons
 g: toggle mouse
-u: toggle minimap
+u: toggle draggable minimap
+k/l: zoom in and out in minimap
 f: toggle freecam mode
-e: exit"
+e: exit
+t + scroll: adjust time speed"
 
 [node name="TITLE" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5000, 5000, 0)
@@ -312,11 +316,8 @@ Press any key to continue."
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4390.71, 72.8106, -144.805)
 script = ExtResource("9_ie4lf")
 
-[node name="rocket" parent="rocket" index="0"]
-script = null
-
 [node name="Rocket_tag" type="Node3D" parent="rocket"]
-transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, 0.03125, 5.11811, 0.0109625)
+transform = Transform3D(-0.989581, 0, -0.143976, 0, 1, 0, 0.143976, 0, -0.989581, -5, 0, 0)
 
 [node name="SubViewport" type="SubViewport" parent="rocket/Rocket_tag"]
 size = Vector2i(300, 25)
